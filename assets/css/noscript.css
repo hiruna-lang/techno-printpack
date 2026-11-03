@@ -1,0 +1,7 @@
+@media(max-width:950px){.header{position:relative;background:#fff}nav{display:flex;position:static;flex-wrap:wrap;max-height:none}.header-inner{height:auto;flex-wrap:wrap;padding:20px 0}.menu-toggle{display:none}}
+.hero-pagination{display:none}
+@media(max-width:1100px){body[class] nav{display:flex;position:static;flex-wrap:wrap;max-height:none}body[class] .header-inner{height:auto;flex-wrap:wrap;padding:18px 0}body[class] .menu-toggle{display:none}}
+#navigation .dropdown-toggle{display:none}
+#navigation .nav-dropdown:focus-within>.dropdown-panel,#navigation .nav-dropdown:hover>.dropdown-panel{display:block}
+@media(max-width:1100px){#navigation .nav-dropdown>.dropdown-panel{display:block}}
+.page-contact #contact-form{display:none}
