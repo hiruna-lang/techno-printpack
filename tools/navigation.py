@@ -1,7 +1,7 @@
 """One company-information dropdown; other navigation items are direct links."""
 dropdowns={
  'about':[('about.html#company-information','Company Information'),('about.html#why-us','Why Choose Us'),('about.html#principles','Vision, Mission & Values'),('quality.html#certifications','Certifications & Documentation')],
- 'industries':[(None,'Techno Industries'),(None,'Grand Techno'),(None,'Techno Farm')]}
+ 'industries':[('index.html','Techno Industries'),(None,'Grand Techno'),(None,'Techno Farm')]}
 short_labels['about']='About Us'
 def header(page):
  links=[]

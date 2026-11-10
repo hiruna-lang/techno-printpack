@@ -1,0 +1,32 @@
+/* Farm typography and contact details, independent of the corporate header. */
+html{scroll-padding-top:24px}
+.farm-return{background:#f1f4e9;border-bottom:1px solid #dfe6d2;color:#345535}
+.farm-return>.container{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px}
+.farm-return-link{display:inline-flex;align-items:center;gap:9px;padding:10px 0;font-size:13px;font-weight:600}
+.farm-return-link svg{width:18px;height:18px;color:inherit}
+.farm-return-link:hover{color:#205f10;text-decoration:underline;text-underline-offset:4px}
+.farm-return-context{font-size:11px;color:#62735a}
+@media(max-width:700px){.farm-return-context{display:none}.farm-return-link{font-size:12px}.farm-return>.container{min-height:42px}}
+body{font-family:'DM Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.hero-content{padding-top:65px}
+.hero-content h1{max-width:620px}
+.contact-panel{grid-template-columns:1fr 1.5fr 1fr;gap:28px;padding:30px 38px}
+.contact-copy h2{font-size:clamp(28px,2.7vw,36px);line-height:1.15;letter-spacing:-1px}
+.contact-copy p{font-size:15px;line-height:1.55;max-width:280px}
+.contact-panel form{padding:22px}
+.contact-panel label{font-family:'DM Sans',Arial,sans-serif;font-size:12px;font-weight:700;line-height:1.4}
+.contact-panel input,.contact-panel select,.contact-panel textarea{font-family:'DM Sans',Arial,sans-serif;font-size:13px;font-weight:400;line-height:1.5;padding:9px 11px;min-height:40px;margin-top:5px}
+.contact-panel input::placeholder,.contact-panel textarea::placeholder{color:#738074;opacity:1}
+.contact-panel textarea{min-height:90px}
+.contact-panel .button{font-family:'DM Sans',Arial,sans-serif;font-size:13px;min-height:40px}
+.contact-panel input:focus,.contact-panel select:focus,.contact-panel textarea:focus{outline:2px solid #98b966;outline-offset:2px;border-color:#6c953e}
+.contact-panel .form-note{font-size:11px;line-height:1.5;margin-top:9px}
+.contact-panel address{font-size:14px;line-height:1.55;padding-left:25px;gap:22px}
+.contact-panel address svg{width:20px;height:20px;color:#edf7d7;margin-top:2px}
+.contact-panel address p{align-items:flex-start;gap:13px}
+.contact-panel address a{overflow-wrap:anywhere}
+@media(max-width:1000px){.contact-panel{grid-template-columns:1fr 1.4fr;padding:26px;gap:24px}.contact-panel address{grid-column:span 2;padding:20px 0 0;font-size:12px;gap:16px}}
+@media(max-width:700px){.hero-content{padding-top:32px}.contact-panel{grid-template-columns:1fr;padding:24px;gap:22px}.contact-copy h2{font-size:32px}.contact-copy p{max-width:none;font-size:14px}.contact-panel form{padding:18px}.contact-panel input,.contact-panel select,.contact-panel textarea{font-size:16px;padding:9px 8px}.contact-panel label{font-size:11px}.contact-panel address{grid-column:auto;font-size:12px;gap:20px 14px}.contact-panel address svg{width:17px;height:17px}.contact-panel address p{gap:8px}}
+@media(max-width:380px){.contact-panel .form-grid{grid-template-columns:1fr}.contact-panel .message{grid-column:auto}.contact-panel address{grid-template-columns:1fr}.produce-card ul{min-height:140px}}
+
+.footer-logo img{filter:none;background:#fffdf5;border-radius:8px;padding:8px;width:100%;height:auto;max-height:150px;object-fit:contain}

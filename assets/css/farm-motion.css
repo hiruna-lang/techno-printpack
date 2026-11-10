@@ -1,0 +1,50 @@
+/* Gentle hero motion; individual translate preserves the collage's rotations. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-content h1 {
+    animation: farm-rise-in 900ms cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero-content p {
+    animation: farm-rise-in 900ms 200ms cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero-content h1 em {
+    display: inline-block;
+    animation: farm-fresh-glow 6s 1.2s ease-in-out infinite;
+  }
+  .hero-collage {
+    animation: farm-photo-in 1.4s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero-mango {
+    animation: farm-photo-breathe 10s 1.4s ease-in-out infinite;
+  }
+  .hero-woodapple {
+    animation: farm-photo-breathe 12s 2s ease-in-out infinite reverse;
+  }
+  .facts > div {
+    animation: farm-rise-in 700ms cubic-bezier(.2,.7,.2,1) both;
+  }
+  .facts > div:nth-child(1) { animation-delay: 400ms; }
+  .facts > div:nth-child(2) { animation-delay: 500ms; }
+  .facts > div:nth-child(3) { animation-delay: 600ms; }
+  .facts > div:nth-child(4) { animation-delay: 700ms; }
+  .facts svg { transition: translate 250ms ease; }
+  .facts > div:hover svg { translate: 0 -3px; }
+  @keyframes farm-rise-in {
+    from { opacity: 0; translate: 0 16px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+  @keyframes farm-photo-in {
+    from { opacity: 0; translate: 18px 0; }
+    to { opacity: 1; translate: 0 0; }
+  }
+  @keyframes farm-photo-breathe {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -5px; }
+  }
+  @keyframes farm-fresh-glow {
+    0%, 100% { color: #ef8b00; }
+    50% { color: #b96500; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero *, .facts * { animation: none !important; }
+}
