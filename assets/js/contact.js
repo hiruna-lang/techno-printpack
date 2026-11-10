@@ -22,7 +22,7 @@ function prepareContact(){
  const validity=fields.map(validateContact);
  if(validity.includes(false)){fields[validity.indexOf(false)].focus();contactStatus.textContent='Please check the highlighted fields.';return false;}
  const data=new FormData(contactForm);
- contactMessage='Techno Printpack — '+data.get('subject')+'\n\n'+[['name','Name'],['company','Company / Organization'],['email','Email'],['phone','Contact Number'],['message','Message']].map(([key,label])=>`${label}: ${String(data.get(key)||'Not specified').trim()}`).join('\n');
+ contactMessage='Techno Industries — '+data.get('subject')+'\n\n'+[['name','Name'],['company','Company / Organization'],['email','Email'],['phone','Contact Number'],['message','Message']].map(([key,label])=>`${label}: ${String(data.get(key)||'Not specified').trim()}`).join('\n');
  document.querySelector('#contact-message-preview').textContent=contactMessage;
  document.querySelector('#contact-email-draft').href=`mailto:${contactConfig.enquiryEmail}?subject=${encodeURIComponent(data.get('subject'))}&body=${encodeURIComponent(contactMessage)}`;
  contactPreview.hidden=false;contactStatus.textContent='Message prepared for review. Nothing has been sent.';

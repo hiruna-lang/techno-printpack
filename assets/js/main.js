@@ -37,35 +37,32 @@ if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>document.
 document.querySelector('.top').addEventListener('click',()=>{window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'});document.querySelector('.brand').focus({preventScroll:true});});
 document.querySelector('#year').textContent=new Date().getFullYear();
 if(window.lucide)lucide.createIcons();
-const heroPhotoArea=document.querySelector('.ref-hero-photo');
-if(heroPhotoArea){
- const firstPhoto=heroPhotoArea.querySelector('img');
- const slides=[firstPhoto];
- firstPhoto.classList.add('hero-slide','is-active');
- [['1618','Manufacturing team operating corrugated machinery'],['1577','Corrugated packaging inside the factory']].forEach(([key,alt])=>{
-  const photo=firstPhoto.cloneNode(false);
-  photo.src=`assets/media/factory-111A${key}-1600.webp`;
-  photo.srcset=`assets/media/factory-111A${key}-640.webp 640w, assets/media/factory-111A${key}-1600.webp 1600w`;
-  photo.alt=alt;photo.classList.remove('is-active');photo.setAttribute('aria-hidden','true');photo.removeAttribute('fetchpriority');
-  heroPhotoArea.append(photo);slides.push(photo);
- });
- let current=0,timer=null,paused=false;
- const pause=document.createElement('button');pause.type='button';pause.className='hero-autoplay-toggle';pause.textContent='Ⅱ';pause.setAttribute('aria-label','Pause image slideshow');heroPhotoArea.append(pause);
- function stop(){clearInterval(timer);timer=null;}
- function start(){
-  stop();pause.hidden=reducedMotion.matches;
-  if(paused||reducedMotion.matches||document.hidden)return;
-  timer=setInterval(()=>{
-   const next=(current+1)%slides.length;
-   if(!slides[next].complete||!slides[next].naturalWidth)return;
-   slides[current].classList.remove('is-active');slides[current].setAttribute('aria-hidden','true');
-   slides[next].classList.add('is-active');slides[next].removeAttribute('aria-hidden');current=next;
-   heroPhotoArea.dataset.slide=String(current);
-  },5000);
+const heroVideo=document.querySelector('.hero-video');
+if(heroVideo){
+ const control=document.querySelector('.hero-video-toggle');
+ let userPaused=false;
+ function updateControl(){
+  const paused=heroVideo.paused;
+  control.textContent=paused?'\u25B6':'\u2161';
+  control.setAttribute('aria-label',paused?'Play manufacturing video':'Pause manufacturing video');
  }
- pause.addEventListener('click',()=>{paused=!paused;pause.textContent=paused?'▶':'Ⅱ';pause.setAttribute('aria-label',paused?'Play image slideshow':'Pause image slideshow');start();});
- document.addEventListener('visibilitychange',start);reducedMotion.addEventListener('change',start);
- window.addEventListener('pagehide',stop);window.addEventListener('pageshow',start);start();
+ function syncPlayback(){
+  if(document.hidden||userPaused||reducedMotion.matches){heroVideo.pause();return;}
+  heroVideo.play().catch(updateControl);
+ }
+ control.hidden=false;
+ control.addEventListener('click',()=>{
+  if(heroVideo.paused){userPaused=false;heroVideo.play().catch(updateControl);}
+  else{userPaused=true;heroVideo.pause();}
+ });
+ heroVideo.addEventListener('play',updateControl);
+ heroVideo.addEventListener('pause',updateControl);
+ heroVideo.addEventListener('error',()=>{control.hidden=true;});
+ document.addEventListener('visibilitychange',syncPlayback);
+ reducedMotion.addEventListener('change',syncPlayback);
+ window.addEventListener('pagehide',()=>heroVideo.pause());
+ window.addEventListener('pageshow',syncPlayback);
+ updateControl();syncPlayback();
 }
 if(window.Swiper&&document.querySelector('.swiper'))new Swiper('.swiper',{slidesPerView:1,spaceBetween:24,speed:reducedMotion.matches?0:500,navigation:{nextEl:'.slide-next',prevEl:'.slide-prev'},keyboard:{enabled:true,onlyInViewport:true},a11y:{enabled:true},breakpoints:{701:{slidesPerView:2},1100:{slidesPerView:3}}});
 // Native navigation remains immediate; entry motion also works with back/forward cache.
@@ -77,7 +74,7 @@ window.setupFilters=function(selector){
  function filter(value){
   buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===value)));
   let count=0;
-  items.forEach(item=>{item.hidden=value!=='all'&&item.dataset.category!==value;if(!item.hidden)count++;});
+  items.forEach(item=>{const categories=(item.dataset.categories||item.dataset.category||'').split(' ');item.hidden=value!=='all'&&!categories.includes(value);if(!item.hidden)count++;});
   if(status)status.textContent=`${count} ${selector.includes('gallery')?'photographs':'packaging options'}`;
   const empty=document.querySelector('.empty-state');if(empty)empty.hidden=count!==0;
   document.dispatchEvent(new Event('galleryfilter'));
