@@ -24,3 +24,62 @@
 #navigation .company-option+.company-option{border-top:1px solid #edf0f3}
 #navigation .company-option:hover,#navigation .company-option:focus-visible{background:#f2f5f7;outline-offset:-3px}
 @media(max-width:1100px){#navigation>a:not(.button),#navigation .nav-dropdown-heading>a{padding:11px 0}#navigation .company-option{padding:12px 16px}}
+
+/* The shared header compresses into a compact bar after the first scroll. */
+.header,
+.header-inner,
+.header .brand,
+.header .brand img,
+.header #navigation>a:not(.button),
+.header #navigation .nav-dropdown-heading>a,
+.header #navigation>.button {
+  transition:
+    background-color .32s ease,
+    box-shadow .32s ease,
+    transform .32s cubic-bezier(.22,1,.36,1);
+}
+.header.stuck {
+  box-shadow:0 8px 24px #0f2a4317;
+}
+.header-inner {
+  will-change:transform;
+}
+.header.stuck .header-inner {
+  transform:scale(.96);
+  transform-origin:center top;
+}
+.header.stuck .nav-dropdown.is-open>.dropdown-panel {
+  animation:nav-dropdown-in .2s ease both;
+}
+
+@keyframes nav-dropdown-in {
+  from {opacity:0;transform:translateY(-7px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:950px) {
+  .header.stuck .header-inner {
+    transform:scale(.97);
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .header,
+  .header-inner,
+  .header .brand,
+  .header .brand img,
+  .header #navigation>a:not(.button),
+  .header #navigation .nav-dropdown-heading>a,
+  .header #navigation>.button {
+    transition:none;
+  }
+  .header-inner {
+    will-change:auto;
+  }
+  .header.stuck .header-inner {
+    transform:none;
+  }
+  .header.stuck .nav-dropdown.is-open>.dropdown-panel {
+    animation:none;
+  }
+}
