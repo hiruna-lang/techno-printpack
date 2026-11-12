@@ -36,24 +36,23 @@ body .corp-hero .ref-hero-photo{position:absolute;inset:0;height:100%;width:100%
 .corp-hero .hero-video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#123551;filter:saturate(1.04) contrast(1.03);backface-visibility:hidden}
 /* Hero content – left column */
 body .corp-hero .ref-hero-content{height:100%;position:relative;z-index:2;display:flex;align-items:center;padding:0;pointer-events:none}
-/* Disable decorative circle */
 body .corp-hero .ref-hero-content:before{display:none}
-/* Text block: 40% width, max 450px, ensures it never overlaps product zone */
-body .corp-hero .ref-hero-content>div{width:40%;max-width:450px;pointer-events:auto}
-/* Headline – sized to never overflow the 40% column */
-body .corp-hero h1{font-size:clamp(26px,2.6vw,40px);font-weight:700;line-height:1.12;letter-spacing:-.038em;margin:0 0 14px;color:#081e35}
+/* Text block: 42% width desktop, constrained so text never bleeds into image zone */
+body .corp-hero .ref-hero-content>div{width:42%;max-width:430px;pointer-events:auto}
+/* Kicker – single line, compact */
+body .corp-hero .corp-kicker{font:700 9px/1 var(--body);color:#1b4e7a;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px;padding-left:11px;border-left:2.5px solid #e8980f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Headline – viewport-relative so it always fits the 42% column */
+body .corp-hero h1{font-size:clamp(22px,2.2vw,36px);font-weight:700;line-height:1.15;letter-spacing:-.035em;margin:0 0 12px;color:#081e35}
 body .corp-hero h1 span{color:#c47c08;display:block}
-/* Kicker */
-body .corp-hero .corp-kicker{font:700 9px/1.6 var(--body);color:#1b4e7a;letter-spacing:.16em;text-transform:uppercase;margin:0 0 16px;padding-left:12px;border-left:2.5px solid #e8980f}
 /* Body copy */
-body .corp-hero .ref-hero-content>div>p:not(.corp-kicker){max-width:380px;color:#2c4a62;font-size:13px;line-height:1.85;margin:0 0 24px}
+body .corp-hero .ref-hero-content>div>p:not(.corp-kicker){color:#2c4a62;font-size:12.5px;line-height:1.8;margin:0 0 20px}
 /* CTA row */
-.corp-hero .button-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.corp-hero .button-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 /* Primary CTA */
-body .corp-hero .button{background:#d98a1f;border-color:#d98a1f;color:#fff;font-size:11.5px;min-height:42px;padding:9px 20px;gap:14px;border-radius:3px;font-weight:700;box-shadow:0 2px 8px rgba(217,138,31,.25);transition:background .2s,box-shadow .2s,transform .2s}
+body .corp-hero .button{background:#d98a1f;border-color:#d98a1f;color:#fff;font-size:11px;min-height:40px;padding:8px 18px;gap:12px;border-radius:3px;font-weight:700;box-shadow:0 2px 8px rgba(217,138,31,.25);transition:background .2s,box-shadow .2s,transform .2s}
 body .corp-hero .button:hover{background:#c27011;border-color:#c27011;box-shadow:0 4px 14px rgba(217,138,31,.35);transform:translateY(-1px)}
 /* Secondary CTA */
-.corp-hero-contact{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:700;color:#0d2d4f;min-height:42px;padding:9px 18px;border:1.5px solid #a8bfcf;border-radius:3px;background:rgba(255,255,255,.72);backdrop-filter:blur(5px);transition:all .2s;line-height:1}
+.corp-hero-contact{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:#0d2d4f;min-height:40px;padding:8px 16px;border:1.5px solid #a8bfcf;border-radius:3px;background:rgba(255,255,255,.72);backdrop-filter:blur(5px);transition:all .2s;line-height:1;white-space:nowrap}
 .corp-hero-contact:hover{background:rgba(255,255,255,.95);border-color:#0d2d4f;box-shadow:0 2px 8px rgba(13,45,79,.1)}
 /* Pagination dots */
 .corp-hero .hero-pagination{display:none}
@@ -235,17 +234,19 @@ body .profile-range-section h2{font-size:32px}
 @media(prefers-reduced-motion:reduce){.corp-hero .hero-image-stage img{animation:none}}
 @media(max-width:1100px){
   body .corp-hero{max-height:520px}
-  body .corp-hero .ref-hero-content>div{width:44%;max-width:420px}
-  body .corp-hero h1{font-size:clamp(24px,2.8vw,36px)}
+  body .corp-hero .ref-hero-content>div{width:44%;max-width:400px}
+  body .corp-hero h1{font-size:clamp(20px,2.4vw,32px)}
   .corp-hero .hero-image-stage img{left:46%;top:7%;right:2%;bottom:7%;width:52%;height:86%}
   .corp-hero+.hero-feature-strip{margin-top:-28px}
 }
 @media(max-width:800px){
   body .corp-hero{max-height:460px;min-height:420px}
-  body .corp-hero .ref-hero-content>div{width:50%;max-width:360px}
-  body .corp-hero h1{font-size:clamp(22px,3.2vw,32px);line-height:1.14}
-  body .corp-hero .corp-kicker{font-size:8px}
-  body .corp-hero .ref-hero-content>div>p:not(.corp-kicker){font-size:12px}
+  body .corp-hero .ref-hero-content>div{width:48%;max-width:340px}
+  body .corp-hero h1{font-size:clamp(18px,2.8vw,28px);line-height:1.16}
+  body .corp-hero .corp-kicker{font-size:8px;white-space:normal}
+  body .corp-hero .ref-hero-content>div>p:not(.corp-kicker){font-size:12px;margin-bottom:16px}
+  body .corp-hero .button{font-size:10.5px;min-height:38px;padding:7px 14px;gap:10px}
+  .corp-hero-contact{font-size:10.5px;min-height:38px;padding:7px 13px}
   .corp-hero .hero-image-stage img{left:48%;top:8%;right:2%;bottom:8%;width:50%;height:84%}
   .corp-hero .hero-image-stage:before{left:44%;right:0}
   .hero-feature-strip{grid-template-columns:repeat(2,1fr);border-radius:11px;width:calc(100% - 40px)}
