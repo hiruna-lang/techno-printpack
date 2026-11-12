@@ -54,6 +54,20 @@ if(heroPhotoStage){
    stage.append(image);
   });
   heroVideo.replaceWith(stage);
+  const featureStrip=document.createElement('div');
+  featureStrip.className='hero-feature-strip';
+  featureStrip.setAttribute('aria-label','Packaging capabilities');
+  [
+   ['▱','Corrugated Packaging','Durable, sustainable and cost-effective packaging solutions.'],
+   ['▤','Custom Print','High-quality printed packaging to build your brand.'],
+   ['⚙','Production Expertise','Modern facilities, skilled teams and consistent quality.'],
+   ['⌖','Sri Lankan Manufacturing','Proudly manufactured locally for regional and global markets.']
+  ].forEach(([icon,title,description])=>{
+   const item=document.createElement('article');
+   item.innerHTML=`<span class="hero-feature-icon" aria-hidden="true">${icon}</span><div><strong>${title}</strong><p>${description}</p></div>`;
+   featureStrip.append(item);
+  });
+  heroPhotoStage.append(featureStrip);
   const videoToggle=heroPhotoStage.querySelector('.hero-video-toggle');
   if(videoToggle)videoToggle.remove();
   let active=0;
@@ -64,6 +78,7 @@ if(heroPhotoStage){
     active=(index+slides.length)%slides.length;
     slides[active].classList.add('is-active');
     pagination.forEach((button,buttonIndex)=>button.toggleAttribute('aria-current',buttonIndex===active));
+    heroPhotoStage.dispatchEvent(new CustomEvent('hero-slide-change',{detail:{slide:slides[active]}}));
    };
    pagination.forEach((button,index)=>button.addEventListener('click',()=>showSlide(index)));
    if(!reducedMotion.matches)window.setInterval(()=>showSlide(active+1),5000);
