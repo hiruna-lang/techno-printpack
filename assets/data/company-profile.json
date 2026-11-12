@@ -1,0 +1,45 @@
+{
+  "source": "Technopack 2.pdf",
+  "name": "Techno Industries",
+  "group": "Techno Group",
+  "overview": "Techno Industries is an ISO-certified manufacturer specializing in value-added corrugated packaging for local and international markets. Part of Techno Group, the company combines technical expertise, manufacturing technology and food-grade certified materials to produce packaging with durability, structural integrity and product presentation in mind.",
+  "vision": "To be the region’s most trusted innovator in value-added corrugated packaging, delivering safe, durable, and sustainable solutions that strengthen brands and protect products.",
+  "focus": ["Quality", "Innovation", "Customer service"],
+  "commitments": ["Continuous improvement", "Sustainability", "Strict quality control"],
+  "companies": ["Techno Industries", "Grand Techno", "Green Techno Farm"],
+  "industries": ["Tea", "Garments", "Porcelain", "Automobile", "Foods & Beverages", "Medicine & Fertilizer", "Dairy & Livestock", "Seafood"],
+  "products": [
+    {"name":"Value-Added Corrugated Boxes","category":"corrugated","description":"Corrugated packaging with structure and presentation developed around the product.","icon":"package","visual":1529,"source_page":7},
+    {"name":"Handmade Boxes","category":"specialty","description":"Handmade box options for packaging and presentation requirements.","icon":"hand","visual":"box-samples","source_page":7},
+    {"name":"Standard Corrugated Boards & Boxes","category":"corrugated","description":"Standard board and box formats for general packaging applications.","icon":"layers","visual":1577,"source_page":7},
+    {"name":"Die-Cut Corrugated Boxes","category":"custom","description":"Custom corrugated shapes and structures for retail, branding and product fit.","icon":"scan-line","visual":1566,"source_page":7},
+    {"name":"Food-Grade Produce Packaging","category":"food","description":"Packaging for fruit, vegetables and produce, with material suitability reviewed for the application.","icon":"carrot","visual":"produce-carton","source_page":7},
+    {"name":"Industrial Packaging","category":"corrugated","description":"Board and box structures for industrial products, transport and handling.","icon":"settings","visual":1618,"source_page":7},
+    {"name":"Recycled Boxes","category":"corrugated","description":"Recycled box options listed in the company product range.","icon":"recycle","visual":"diagram-rsc","source_page":7},
+    {"name":"Gift Boxes","category":"specialty","description":"Box formats for gifts and presentation-led packaging.","icon":"gift","visual":"box-samples","source_page":7},
+    {"name":"Wooden Boxes","category":"specialty","description":"Wooden box options for product-specific packing requirements.","icon":"box","visual":"material-wood","source_page":7},
+    {"name":"PVC Boxes","category":"pvc","description":"Clear box formats for retail, gift items, cosmetics and confectionery.","icon":"box","visual":"pvc-box","source_page":11}
+  ],
+  "flutes": [
+    {"name":"F Flute","description":"Ultra-fine corrugation for premium print."},
+    {"name":"E Flute","description":"Smooth surface for premium printing and FMCG packaging."},
+    {"name":"B Flute","description":"Retail and transportation cartons."},
+    {"name":"C Flute","description":"Cushioning for produce and bulk goods."},
+    {"name":"BC Double Flute","description":"High-strength export cartons."},
+    {"name":"EB Double Flute","description":"Strength with a premium print surface."}
+  ],
+  "boards": [
+    {"name":"Single Wall (3-Ply)","description":"Lightweight general packaging."},
+    {"name":"Double Wall (5-Ply)","description":"Export and industrial applications."},
+    {"name":"Triple Wall (7-Ply)","description":"Heavy-load packaging."},
+    {"name":"Food-Grade Boards","description":"Fruit, vegetables and consumables."},
+    {"name":"Moisture-Resistant Boards","description":"Cold-chain, seafood, produce and humid conditions."}
+  ],
+  "structures": ["Regular Slotted Cartons (RSC)","Half Slotted Cartons (HSC)","Die-Cut Boxes","Folder-Type Boxes / Wrap-Arounds","Telescopic Boxes (Top & Bottom Set)","Self-Locking Boxes","Partitioned Boxes","Punch / Handle Boxes","Pallet / Bulk Boxes","Display Boxes / Racks"],
+  "pvc": ["Transparent PVC Boxes","Foldable PVC Boxes","Die-Cut PVC Packaging","PVC Sleeves & Wraps","PVC Gift Boxes","Food-Grade PVC Options — upon requirement"],
+  "printing": ["Flexographic printing — 1–4 colours","Offset printing","High-quality line printing","Multi-colour printing (retail grade)","Food-safe inks"],
+  "surface_finishes": ["OP Varnish","UV Lamination","UV Matte Lamination"],
+  "structural_finishes": ["Die-Cutting","Perforations","Ventilation Holes","Reinforced Edges & Corners"],
+  "certification": {"statement":"ISO-certified manufacturer using food-grade certified materials","standard_shown":"ISO 9001:2015","source_pages":[1,2]},
+  "contact": {"address":"227/1, Ghanarathana Mw, Raigama, Bandaragama, Sri Lanka.","telephone":"+94 38 225 7170","mobile":"+94 777 777 648","emails":["sampath@technoind.biz","gayani@technoind.biz","info@technoind.biz"],"whatsapp_confirmed":false,"hours_confirmed":false}
+}

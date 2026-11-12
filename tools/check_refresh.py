@@ -7,9 +7,9 @@ with sync_playwright() as p:
  assert page.locator('#navigation a[href="gallery.html"]').count()==0
  page.set_viewport_size({'width':1440,'height':1000})
  page.goto('http://127.0.0.1:5173/products.html')
- assert page.locator('.catalogue-card').count()==6
- assert page.locator('.catalogue-card-image.is-illustration').count()==3
- assert page.locator('.catalogue-card-image.is-illustration img').evaluate_all('(imgs)=>imgs.every(i=>i.getAttribute("src").endsWith(".svg"))')
+ assert page.locator('.catalogue-card').count()==10
+ assert page.locator('.catalogue-card-image.is-illustration').count()==6
+ assert page.locator('.catalogue-card-image.is-illustration img').evaluate_all('(imgs)=>imgs.every(i=>i.complete && i.naturalWidth>0)')
  page.goto('http://127.0.0.1:5173/capabilities.html#quality-approach')
  assert page.locator('#quality-approach').count()==1
  assert page.locator('.capability-card').count()==4

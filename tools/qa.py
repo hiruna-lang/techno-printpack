@@ -48,7 +48,7 @@ with sync_playwright() as pw:
  page.goto('http://127.0.0.1:5173/products.html');page.locator('[data-filter=pvc]').click();assert page.locator('.product-card:visible').count()==1
  page.goto('http://127.0.0.1:5173/quotation.html');page.locator('button[type=submit]').click();assert page.locator('[aria-invalid=true]').count()>0
  for n,v in {'name':'Website QA','email':'qa@example.com','phone':'+94 11 234 5678','quantity':'500','dimensions':'20 × 30 × 40 cm'}.items():page.locator('#'+n).fill(v)
- page.locator('#type').select_option(label='Regular slotted cartons');page.locator('button[type=submit]').click();assert page.locator('#enquiry-preview').is_visible();assert page.locator('#send-whatsapp').is_disabled();assert 'Nothing has been sent' in page.locator('#form-status').inner_text()
+ page.locator('#type').select_option(label='Regular Slotted Cartons (RSC)');page.locator('button[type=submit]').click();assert page.locator('#enquiry-preview').is_visible();assert page.locator('#send-whatsapp').is_disabled();assert 'Nothing has been sent' in page.locator('#form-status').inner_text()
  page.evaluate("window.TECHNO_CONFIG={whatsappNumber:'94700000000',enquiryEmail:'info@technoind.biz'}")
  page.locator('button[type=submit]').click();assert page.locator('#send-whatsapp').is_enabled()
  page.locator('#name').fill('Changed');assert not page.locator('#enquiry-preview').is_visible()
@@ -56,5 +56,5 @@ with sync_playwright() as pw:
  context=browser.new_context(java_script_enabled=False);nojs=context.new_page();nojs.goto('http://127.0.0.1:5173/');assert nojs.locator('h1').is_visible();assert nojs.locator('.feature-card').count()==4
  browser.close()
 assert not errors,errors
-(root/'tools/qa-results.json').write_text(json.dumps({'layout_checks':results,'interaction_checks':'Passed menu, products, gallery keyboard navigation, quote validation and configurable WhatsApp availability, no-JS content','javascript_errors':errors},indent=2))
+(root/'tools/qa-results.json').write_text(json.dumps({'layout_checks':results,'interaction_checks':'Passed menu, products, quote validation and configurable WhatsApp availability, no-JS content','javascript_errors':errors},indent=2))
 print(f'PASS: {len(results)} page/viewport checks, local links and assets, interactive controls, no-JS content; no JavaScript exceptions.')

@@ -57,6 +57,6 @@
     "quality.html @ 1920: pass",
     "quotation.html @ 1920: pass"
   ],
-  "interaction_checks": "Passed menu, products, gallery keyboard navigation, quote validation and configurable WhatsApp availability, no-JS content",
+  "interaction_checks": "Passed menu, products, quote validation and configurable WhatsApp availability, no-JS content",
   "javascript_errors": []
 }

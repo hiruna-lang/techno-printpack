@@ -25,9 +25,11 @@ with sync_playwright() as p:
  page.locator('.menu-toggle').click();page.locator('[aria-controls="dropdown-about"]').click();page.locator('#dropdown-about a[href="about.html#why-us"]').click()
  page.wait_for_url('**/about.html#why-us');assert page.locator('#why-us').get_attribute('open') is not None
  page.locator('.menu-toggle').click();page.locator('[aria-controls="dropdown-industries"]').click()
- assert page.locator('#dropdown-industries button').all_text_contents()==['Techno Industries','Grand Techno','Techno Farm']
+ assert page.locator('#dropdown-industries a').all_text_contents()==['Techno Industries','Green Techno Farm']
+ assert page.locator('#dropdown-industries button').all_text_contents()==['Grand Techno']
+ assert page.locator('#dropdown-industries a[href="farm/index.html"]').count()==1
  before=page.url
- page.locator('#dropdown-industries button').nth(1).click();assert page.url==before
+ page.locator('#dropdown-industries button').first.click();assert page.url==before
  assert page.locator('#dropdown-about').inner_text().find('Techno Group')==-1
  page.set_viewport_size({'width':1440,'height':950});page.locator('[aria-controls="dropdown-industries"]').hover()
  page.screenshot(path=str(root/'tools/industries-dropdown.png'))
