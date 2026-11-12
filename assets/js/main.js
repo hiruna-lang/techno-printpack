@@ -67,7 +67,8 @@ if(heroPhotoStage){
    item.innerHTML=`<span class="hero-feature-icon" aria-hidden="true">${icon}</span><div><strong>${title}</strong><p>${description}</p></div>`;
    featureStrip.append(item);
   });
-  heroPhotoStage.append(featureStrip);
+  const heroSection=heroPhotoStage.closest('.corp-hero');
+  if(heroSection&&heroSection.parentNode){heroSection.after(featureStrip);}else{heroPhotoStage.append(featureStrip);}
   const videoToggle=heroPhotoStage.querySelector('.hero-video-toggle');
   if(videoToggle)videoToggle.remove();
   let active=0;
