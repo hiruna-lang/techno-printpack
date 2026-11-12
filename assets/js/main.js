@@ -37,6 +37,38 @@ if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>document.
 document.querySelector('.top').addEventListener('click',()=>{window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'});document.querySelector('.brand').focus({preventScroll:true});});
 document.querySelector('#year').textContent=new Date().getFullYear();
 if(window.lucide)lucide.createIcons();
+const heroPhotoStage=document.querySelector('.page-index .ref-hero-photo');
+if(heroPhotoStage){
+ const heroVideo=heroPhotoStage.querySelector('.hero-video');
+ if(heroVideo){
+  const heroImages=['box-hero-1.png','box-hero-2.png','box-hero-3.png','box-hero-4.png','box-hero-5.png','box-hero-6.png'];
+  const stage=document.createElement('div');
+  stage.className='hero-image-stage';
+  heroImages.forEach((source,index)=>{
+   const image=document.createElement('img');
+   image.src=`assets/media/hero-products/${source}`;
+   image.alt='';
+   image.className=index===0?'is-active':'';
+   image.loading='eager';
+   image.setAttribute('aria-hidden','true');
+   stage.append(image);
+  });
+  heroVideo.replaceWith(stage);
+  const videoToggle=heroPhotoStage.querySelector('.hero-video-toggle');
+  if(videoToggle)videoToggle.remove();
+  let active=0;
+   const pagination=[...document.querySelectorAll('.hero-pagination button')];
+   const showSlide=index=>{
+    const slides=stage.querySelectorAll('img');
+    slides[active].classList.remove('is-active');
+    active=(index+slides.length)%slides.length;
+    slides[active].classList.add('is-active');
+    pagination.forEach((button,buttonIndex)=>button.toggleAttribute('aria-current',buttonIndex===active));
+   };
+   pagination.forEach((button,index)=>button.addEventListener('click',()=>showSlide(index)));
+   if(!reducedMotion.matches)window.setInterval(()=>showSlide(active+1),5000);
+ }
+}
 const heroVideo=document.querySelector('.hero-video');
 if(heroVideo){
  const control=document.querySelector('.hero-video-toggle');

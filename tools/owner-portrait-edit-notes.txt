@@ -1,0 +1,6 @@
+Tool: built-in image_gen (edit mode)
+Source: assets/media/factory-111A1078-1600.webp
+Owner identity: confirmed by the user.
+Original RAW and WebP assets preserved.
+Final edit prompt:
+Use case: identity-preserve / photographic color correction. Edit target: the supplied existing photo of the company owner seated at his office desk. This is a subtle photo-development correction, NOT a new portrait. Only gently improve exposure, white balance and tonal/color grading: reduce the warm yellow wall/light cast toward a neutral cream, lift deep shadows slightly on the desk and face, modestly enhance midtone contrast and natural color, retain detail in his white shirt, leave black furniture black. Keep the result natural and believable, not HDR or stylized. Strict invariants: preserve the exact same man, facial structure, skin tone, expression, glasses, hair, body, seated pose, clothing, hand positions, camera perspective and the entire original office scene, furniture, statues, photos, laptop, desk items, and framing. Do not beautify, retouch skin, change features, add/remove objects, crop, rearrange or replace the background. Keep the landscape 3:2 composition. The only intended visual change is a slightly brighter, cleaner, color-balanced version of the identical photograph for a corporate About page.

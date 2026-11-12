@@ -3,6 +3,7 @@ if(window.gsap&&window.ScrollTrigger&&!window.matchMedia('(prefers-reduced-motio
  gsap.registerPlugin(ScrollTrigger);
  gsap.from('.about-hero .container > div > *',{y:15,opacity:0,duration:.65,stagger:.08,ease:'power2.out',clearProps:'all'});
  gsap.from('.ref-hero-content > div > *',{y:15,opacity:0,duration:.65,stagger:.08,ease:'power2.out',clearProps:'all'});
+ document.querySelectorAll('.corp-heading, .corp-about > div, .corp-process-layout > div').forEach(el=>gsap.from(el,{y:16,opacity:0,duration:.65,ease:'power2.out',clearProps:'all',scrollTrigger:{trigger:el,start:'top 92%',once:true}}));
  gsap.from('.opening-copy > *',{y:14,opacity:0,duration:.65,stagger:.08,ease:'power2.out',clearProps:'all'});
  gsap.from('.opening-photo',{y:12,opacity:0,duration:.85,delay:.1,ease:'power2.out',clearProps:'all'});
  gsap.from('.hero-copy > *, .internal-hero .container > *',{y:30,opacity:0,duration:.85,stagger:.12,ease:'power3.out',clearProps:'all'});

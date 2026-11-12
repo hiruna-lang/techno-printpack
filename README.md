@@ -86,3 +86,9 @@ No enquiry is sent in testing. Lighthouse scores have not been measured and are 
 
 ### Homepage hero video
 The homepage uses `assets/video/techno-industries-hero.mp4` (the supplied 1080p video) with muted inline looping playback. Replace that file to update the footage and update `techno-industries-hero-poster.webp` with a matching still. The original on E: is preserved. `tools/company_profile_content.py` owns the video markup; `assets/js/main.js` handles pause/play, hidden tabs and reduced motion. Reduced-motion visitors see the poster until they choose Play.
+
+### Reference-led corporate refresh
+The current presentation follows the conventional corporate layout direction of https://synergyiso.lk/, adapted to Techno Industries branding and verified packaging content. The final composition is in `tools/corporate_refresh.py`, loaded after the company profile layer. Shared visual rules are in `assets/css/corporate-refresh.css` (loaded last). The homepage retains the supplied video, with open industry, company, product, manufacturing and contact sections. All eight packaging pages share the refined navigation and light footer. The Farm site remains independent. Run `python tools/build_site.py` after editing authoring sources; do not edit generated HTML alone.
+
+### Owner photograph
+The user identified `factory-111A1078-1600.webp` as the company owner's photograph. The About page now includes it in the Leadership section (`about.html#leadership`). A separate, gently brightened and colour-balanced version was made using the built-in image editing tool. Original RAW and WebP files remain untouched. The enhanced master is `assets/media/owner-portrait-master.png`; responsive website exports are `owner-portrait-1600.webp` and `owner-portrait-640.webp` in the same directory. The exact edit prompt is recorded in `tools/owner-portrait-edit-notes.txt`. No name, personal message or additional professional title was supplied or invented.

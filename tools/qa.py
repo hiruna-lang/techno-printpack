@@ -53,7 +53,7 @@ with sync_playwright() as pw:
  page.locator('button[type=submit]').click();assert page.locator('#send-whatsapp').is_enabled()
  page.locator('#name').fill('Changed');assert not page.locator('#enquiry-preview').is_visible()
  # Check content remains usable without scripts or CDN dependencies.
- context=browser.new_context(java_script_enabled=False);nojs=context.new_page();nojs.goto('http://127.0.0.1:5173/');assert nojs.locator('h1').is_visible();assert nojs.locator('.feature-card').count()==4
+ context=browser.new_context(java_script_enabled=False);nojs=context.new_page();nojs.goto('http://127.0.0.1:5173/');assert nojs.locator('h1').is_visible();assert nojs.locator('.corp-solutions article').count()==3
  browser.close()
 assert not errors,errors
 (root/'tools/qa-results.json').write_text(json.dumps({'layout_checks':results,'interaction_checks':'Passed menu, products, quote validation and configurable WhatsApp availability, no-JS content','javascript_errors':errors},indent=2))
