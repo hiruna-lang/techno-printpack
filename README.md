@@ -92,3 +92,9 @@ The current presentation follows the conventional corporate layout direction of 
 
 ### Owner photograph
 The user identified `factory-111A1078-1600.webp` as the company owner's photograph. The About page now includes it in the Leadership section (`about.html#leadership`). A separate, gently brightened and colour-balanced version was made using the built-in image editing tool. Original RAW and WebP files remain untouched. The enhanced master is `assets/media/owner-portrait-master.png`; responsive website exports are `owner-portrait-1600.webp` and `owner-portrait-640.webp` in the same directory. The exact edit prompt is recorded in `tools/owner-portrait-edit-notes.txt`. No name, personal message or additional professional title was supplied or invented.
+
+
+### Homepage packaging banner (current)
+The homepage banner uses the existing six product images, with a scoped navy/amber/neutral design and larger, high-contrast text. Edit `tools/templates/home-hero.html` for the source markup, `assets/css/home-banner.css` for its layout and typography, and `assets/js/home-banner.js` for its automatic image crossfade. `tools/corporate_refresh.py` reads this template when generating the homepage. The first image and all content are usable without JavaScript. The slideshow has a pause control, respects reduced motion and pauses outside the viewport or in a hidden tab.
+
+Original PNGs in `assets/media/hero-products/` are preserved; 640px and 1024px WebP copies reduce download size. Only the first image loads immediately; subsequent images load as needed. The former JS-created hero and overlapping feature strip have been replaced by static, accessible HTML. Contact and capability page edits made directly in HTML were preserved during this update; the full-site generator was not run.
