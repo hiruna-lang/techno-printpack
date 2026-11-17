@@ -46,7 +46,13 @@ Run `python tools/build_site.py` after authoring. It overwrites the eight main H
 
 ## Navigation and images
 
-About Us and the existing Industries item have dropdowns. Other header items are direct links. Desktop supports hover, click, Tab, arrows, Home/End and Escape; mobile uses expandable sections. About links open their relevant details. The Farm company link opens `farm/index.html`; Grand Techno remains the existing unconfigured company button.
+About Us and the existing Industries item have dropdowns. Other header items are direct links. The shared white navigation uses navy dropdown introductions, gold icon accents, short link descriptions and one consistent active-page underline. Desktop supports pointer intent, click, Tab, arrows, Home/End and Escape; mobile uses an animated menu button and expandable sections. About links open their relevant details. The Farm company link opens `farm/index.html`; Grand Techno remains the existing unconfigured company button.
+
+`tools/navigation_markup.py` is the shared header source. Edit its labels, descriptions or destinations, then run `python tools/sync_navigation.py` to update only the headers of the eight main company pages. `python tools/sync_navigation.py --check` checks that they match. The source builder reads the same renderer through `tools/navigation.py`; avoid rebuilding complete pages over independent direct HTML edits.
+
+`assets/css/navigation.css` loads last so all pages share the same navigation design. It uses CSS opacity/transform transitions, staggered link reveals, a grid accordion and reduced-motion overrides. `assets/js/navigation.js` loads before optional third-party libraries and provides submenu states, closed-panel `inert`, mobile focus wrapping, outside dismissal and back/forward restoration. A normal initial page-load event does not dismiss an already opened menu. Header heights stay 79px on desktop/tablet and 69px on mobile; sticky state changes the shadow without scaling the logo or shifting content. Without JavaScript the mobile navigation stays expanded in normal document flow, and desktop dropdowns remain available through hover or keyboard focus.
+
+Run `python tools/check_navigation.py http://127.0.0.1:5173` against a local static preview to check responsive layouts, keyboard/touch controls, submenu destinations, reduced motion and the no-JavaScript fallback. Navigation refreshes preserve page bodies, hero/carousel content and footers.
 
 The packaging-site logo is the actual Techno Industries wordmark extracted from the PDF, stored at `assets/media/profile/company-logo.png`. The footer places it on white for contrast. The older generated logo files remain in the repository but are not used by the main header/footer.
 
@@ -99,9 +105,11 @@ The homepage banner uses the existing six product images, with a scoped navy/amb
 
 Original PNGs in `assets/media/hero-products/` are preserved; 640px and 1024px WebP copies reduce download size. Only the first image loads immediately; subsequent images load as needed. The former JS-created hero and overlapping feature strip have been replaced by static, accessible HTML. Contact and capability page edits made directly in HTML were preserved during this update; the full-site generator was not run.
 
+The desktop hero now budgets its height against the viewport so the complete capability strip is visible on common laptop/desktop opening screens. Short windows use tighter spacing and proportionate heading sizes; very narrow screens retain a natural stacked layout. The strip uses a white surface, navy headings, slate descriptions, gold icons and neutral dividers, with its final colours in `assets/css/brand-theme.css`. It follows the same 1180px content grid as the header and hero text, with four desktop columns and two tablet/mobile columns. Its mobile layout has no negative overlap. Sizing rules live in `assets/css/home-theme.css`; the text, six-image carousel, product aspect ratios and navigation are unchanged.
+
 
 ### Homepage colour system
-`assets/css/home-theme.css` unifies the homepage navigation, buttons, headings, section surfaces and icons; the shared `footer.css` follows it. Colours: navy `#0F2A43`, amber `#D98A1F`, white and neutral `#F5F6F8`; body copy uses `#536372`. Primary actions share amber backgrounds and navy text. The product images change automatically without visible captions. The current hero uses the supplied reference's pale-grey curves, navy studio wall and realistic white pedestal; the second headline line is charcoal. Theme rules are scoped to `body.page-index`.
+`assets/css/home-theme.css` provides homepage layout details. The shared `assets/css/brand-theme.css` loads last across all eight main company pages and applies the 60/30/10 colour allocation through actual navy and gold section/panel surfaces. Colours: navy `#0F2A43`, amber `#D98A1F`, white and neutral `#F5F6F8`; body copy uses `#536372`. Gold enquiry bands on inner pages use navy buttons with white text; the homepage closes with coordinated white rows and one gold action. The product images change automatically without visible captions. The current hero uses the supplied reference's pale-grey curves, navy studio wall and realistic white pedestal; the second headline line is charcoal. See `COLOUR-SYSTEM.md` for the measured desktop/mobile coverage and audit method.
 
 
 ### Product display scene
@@ -113,7 +121,7 @@ The master is `assets/media/hero-products/reference-hero-background-master.png`;
 
 ### Shared company footer
 
-The homepage closes with a compact light enquiry band before the navy footer. Its source is `tools/templates/home-enquiry.html`, read by `tools/corporate_refresh.py`; the scoped layout is in `assets/css/home-theme.css`. It uses navy text and one amber quotation link, aligned to the shared content width. Contact numbers and email remain together in the footer. The former dark photographic contact banner has been replaced; its original factory photograph is preserved.
+The homepage closes with coordinated white quality and enquiry rows before the navy footer. Navy headings, short gold rules, fine dividers and one gold quotation button share the same content grid. The fixed quality heading sits beside the automatic logo rail on desktop and above it on smaller screens. The enquiry source is `tools/templates/home-enquiry.html`, read by `tools/corporate_refresh.py`; its scoped layout is in `assets/css/home-theme.css`, with shared surface colours in `assets/css/brand-theme.css`. Contact numbers and email remain together in the compact footer. The former dark photographic contact banner has been replaced; its original factory photograph is preserved.
 
 All eight Techno Industries pages use `tools/templates/footer.html`. The compact navy footer groups the official logo, short company description and quotation button with company links, packaging categories, and verified phone/email/address details. The original black/blue logo is preserved on a light plate, with fine vertical column dividers. Colours are navy `#0F2A43`, neutral `#F5F6F8` and amber `#D98A1F`. The footer makes no unverified social, WhatsApp or opening-hour claims.
 
@@ -131,8 +139,8 @@ python tools/check_footer.py http://127.0.0.1:5500
 
 The full builder also reads this footer template. Footer QA checks all eight pages at seven widths, compact desktop height, updated credit/copyright, local links and category targets, mobile target sizes, keyboard focus and no-JavaScript navigation. It does not send messages or modify content.
 
-### Quality-page marks animation
+### Quality and homepage marks animation
 
-The four existing marks on `quality.html#quality-industry-marks` use a slow, seamless rightward loop. Logos stay upright and use `object-fit: contain`; their captions and the organization-note text retain their original meaning. `assets/css/quality-marks.css` controls the 64-second linear, transform-only animation and responsive cards; `assets/js/quality-marks.js` progressively enhances the original grid. These files load only on the Quality page, including in the authoring generator.
+The four existing marks on `quality.html#quality-industry-marks` and `index.html#home-quality-marks` use a slow, seamless rightward loop. The homepage rail shares the white section surface with its fixed heading and documentation link; softly masked edges keep the moving logos contained. Logos stay upright and use `object-fit: contain`; captions and organization-logo wording retain their original meaning. `assets/css/quality-marks.css` controls the 64-second linear, transform-only animation and responsive groups; `assets/js/quality-marks.js` progressively enhances the original markup. These files load on the homepage and Quality page, including in the authoring generator.
 
 The loop is fully automatic, with no manual controls or hover stops. Motion stops only while the section is off-screen or the tab is inactive. Reduced-motion users and visitors without JavaScript receive the original static grid with all four marks. Logos are prepared near the viewport before animation starts; the duplicate loop group is hidden from assistive technology and has no duplicate IDs or interactive elements. Original logo files, certification wording and the EDB/CEA organization-logo disclaimer are unchanged.
