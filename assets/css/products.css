@@ -20,3 +20,28 @@
 .page-products .catalogue-card:nth-child(2) .catalogue-card-image img{transform:scale(1.65);transform-origin:70% 80%}
 .page-products .catalogue-card:nth-child(2):hover .catalogue-card-image img{transform:scale(1.7)}
 .page-products .catalogue-cta-photo img{transform:scale(2.1);transform-origin:left 70%}
+
+/* Keep the closing enquiry band aligned with the homepage's navy CTA treatment. */
+.page-products .cta.section {
+  padding: 38px 0;
+  background: linear-gradient(110deg, #073147, #051e2e);
+  border: 0;
+  color: #fff;
+}
+.page-products .cta.section :is(h2, p, .eyebrow) { color: #fff; }
+.page-products .cta.section .eyebrow {
+  color: #f0c88a;
+}
+.page-products .cta.section .eyebrow::after {
+  background: #d98a1f;
+}
+.page-products .cta.section .button {
+  background: #d98a1f;
+  border-color: #d98a1f;
+  color: #0f2a43;
+}
+.page-products .cta.section .button:hover {
+  background: #e8a547;
+  border-color: #e8a547;
+  color: #0f2a43;
+}

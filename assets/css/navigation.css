@@ -112,6 +112,7 @@ html body .header .brand.profile-logo img {
   width: auto;
   max-width: 210px;
   object-fit: contain;
+  clip-path: none;
 }
 
 /* Menu Toggle Button: Hidden on desktop, shown on mobile */
