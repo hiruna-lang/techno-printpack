@@ -20,6 +20,13 @@ body .button:hover, body .banner-button-primary:hover { background: #e8a547; bor
 body :is(a,button,input,select,textarea):focus-visible { outline: 3px solid var(--brand-navy); outline-offset: 4px; }
 body .contact-form-actions .button { background: var(--brand-gold); border-color: var(--brand-gold); color: var(--brand-navy); }
 
+/* Keep page content focused on the primary header and enquiry actions. */
+body .corp-link,
+body .text-link,
+body.page-about .about-story > .button {
+  display: none;
+}
+
 /* Gold is a visible content surface, rather than only a thin line or icon. */
 body .cta.section { background: var(--brand-gold); border-color: #bd771d; color: var(--brand-navy); }
 body .cta.section :is(h2,p,.eyebrow) { color: var(--brand-navy); }

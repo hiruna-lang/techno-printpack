@@ -21,16 +21,17 @@
 .page-products .catalogue-card:nth-child(2):hover .catalogue-card-image img{transform:scale(1.7)}
 .page-products .catalogue-cta-photo img{transform:scale(2.1);transform-origin:left 70%}
 
-/* Keep the closing enquiry band aligned with the homepage's navy CTA treatment. */
+/* Keep the closing enquiry band distinct from the footer while retaining the brand palette. */
 .page-products .cta.section {
   padding: 38px 0;
-  background: linear-gradient(110deg, #073147, #051e2e);
-  border: 0;
-  color: #fff;
+  background: linear-gradient(110deg, #f6f7f9, #eef1f3);
+  border-top: 1px solid #dfe5ea;
+  border-bottom: 1px solid #dfe5ea;
+  color: #0f2a43;
 }
-.page-products .cta.section :is(h2, p, .eyebrow) { color: #fff; }
+.page-products .cta.section :is(h2, p, .eyebrow) { color: #0f2a43; }
 .page-products .cta.section .eyebrow {
-  color: #f0c88a;
+  color: #9d6112;
 }
 .page-products .cta.section .eyebrow::after {
   background: #d98a1f;
