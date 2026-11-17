@@ -1,50 +1,84 @@
 'use strict';
-// Progressive enhancement: the first product image and all copy are static HTML.
+// Only the product images change. Copy, layout and the first frame are static HTML.
 {
  const banner=document.querySelector('.packaging-banner');
- if(banner){
-  const slides=[...banner.querySelectorAll('.banner-product')];
-  const control=banner.querySelector('.banner-playback');
+ const stage=banner?.querySelector('.banner-product-stage');
+ if(stage){
+  const slides=[...stage.querySelectorAll('.banner-product')];
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  const failedSlides=new Set();
-  let active=0,paused=motion.matches,inView=true,timer=null;
-  const stop=()=>{clearTimeout(timer);timer=null;};
-  function updateControl(){
-   control.querySelector('.banner-playback-icon').textContent=paused?'\u25b6':'\u2161';
-   control.querySelector('.banner-playback-label').textContent=paused?'Play':'Pause';
-   control.setAttribute('aria-label',paused?'Play packaging images':'Pause packaging images');
-  }
-  async function loadSlide(slide){
-   if(slide.dataset.src){
-    slide.srcset=slide.dataset.srcset;
-    slide.src=slide.dataset.src;
-    delete slide.dataset.src;
+  const interval=5000;
+  const failed=new Set(),loads=new Map(),pausedAnimations=new Set();
+  let active=0,timer=null,deadline=0,generation=0,inView=true,pageHidden=false;
+  const canRun=()=>slides.length>1&&!document.hidden&&!pageHidden&&!motion.matches&&inView;
+
+  function loadSlide(index){
+   if(!loads.has(index)){
+    const image=slides[index];
+    if(image.dataset.src){
+     image.srcset=image.dataset.srcset;
+     image.src=image.dataset.src;
+     delete image.dataset.src;
+    }
+    const ready=image.decode().catch(error=>{failed.add(index);throw error;});
+    loads.set(index,ready);
    }
-   await slide.decode();
+   return loads.get(index);
   }
-  function schedule(){
-   stop();updateControl();
-   if(paused||!inView||document.hidden||slides.length<2)return;
-   timer=setTimeout(async()=>{
-    let next=(active+1)%slides.length;
-    while(failedSlides.has(next)&&next!==active)next=(next+1)%slides.length;
-    if(next===active)return;
-    try{
-     await loadSlide(slides[next]);
-     if(paused||!inView||document.hidden)return;
-     slides[active].classList.remove('is-active');
-     active=next;slides[active].classList.add('is-active');
-    }catch(_){failedSlides.add(next);/* Keep the current image and skip this failed asset on the next cycle. */}
-    schedule();
-   },6500);
+  function nextIndex(){
+   for(let offset=1;offset<slides.length;offset++){
+    const next=(active+offset)%slides.length;
+    if(!failed.has(next))return next;
+   }
+   return -1;
   }
-  control.hidden=false;
-  control.addEventListener('click',()=>{paused=!paused;schedule();});
-  document.addEventListener('visibilitychange',schedule);
-  motion.addEventListener('change',event=>{paused=event.matches;schedule();});
-  window.addEventListener('pagehide',stop);
-  window.addEventListener('pageshow',schedule);
-  if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;schedule();},{threshold:.08}).observe(banner);
-  schedule();
+  function prepareNext(){
+   const next=nextIndex();
+   if(next>=0)loadSlide(next).catch(()=>{});
+  }
+  function armTimer(){
+   clearTimeout(timer);
+   if(canRun()&&nextIndex()>=0)timer=setTimeout(advance,Math.max(0,deadline-performance.now()));
+  }
+  async function advance(){
+   timer=null;
+   if(!canRun())return;
+   const next=nextIndex(),currentGeneration=generation;
+   if(next<0)return;
+   try{
+    await loadSlide(next);
+    if(!canRun()||currentGeneration!==generation)return;
+    slides[active].classList.remove('is-active');
+    active=next;
+    slides[active].classList.add('is-active');
+   }catch(_){/* Preserve the current image and skip an unavailable asset. */}
+   if(!canRun()||currentGeneration!==generation)return;
+   // Absolute deadlines avoid accumulating decode/timer delays between frames.
+   deadline+=interval;
+   if(deadline<=performance.now())deadline=performance.now()+interval;
+   prepareNext();armTimer();
+  }
+  function syncPlayback(){
+   clearTimeout(timer);timer=null;generation++;
+   if(!canRun()){
+    // Freeze an in-progress fade/zoom as well as the automatic image changes.
+    stage.getAnimations?.({subtree:true}).forEach(animation=>{
+     if(animation.playState==='running'){animation.pause();pausedAnimations.add(animation);}
+    });
+    if(motion.matches)pausedAnimations.clear();
+    return;
+   }
+   pausedAnimations.forEach(animation=>{if(animation.playState==='paused')animation.play();});
+   pausedAnimations.clear();
+   deadline=performance.now()+interval;
+   prepareNext();armTimer();
+  }
+  document.addEventListener('visibilitychange',syncPlayback);
+  motion.addEventListener('change',syncPlayback);
+  window.addEventListener('pagehide',()=>{pageHidden=true;syncPlayback();});
+  window.addEventListener('pageshow',()=>{pageHidden=false;syncPlayback();});
+  if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>{
+   if(inView!==entry.isIntersecting){inView=entry.isIntersecting;syncPlayback();}
+  },{threshold:.08}).observe(banner);
+  syncPlayback();
  }
 }

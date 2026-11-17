@@ -1,0 +1,31 @@
+/* Progressive enhancement: the original four-card grid is the static fallback. */
+body.page-quality .marks-viewport { min-width: 0; }
+body.page-quality .marks-clone[hidden] { display: none; }
+
+body.page-quality .marks-is-animated {
+  --marks-gap: 20px;
+  --marks-card-width: clamp(220px, calc((100vw - 108px) / 4), 280px);
+}
+body.page-quality .marks-is-animated .marks-viewport { overflow: hidden; padding-block: 1px; }
+body.page-quality .marks-is-animated .marks-track { display: flex; width: max-content; animation: quality-marks-right 64s linear infinite; animation-play-state: paused; will-change: transform; }
+body.page-quality .marks-is-animated[data-marks-running="true"] .marks-track { animation-play-state: running; }
+body.page-quality .marks-is-animated .profile-marks-grid { display: flex; flex: 0 0 auto; align-items: stretch; gap: var(--marks-gap); width: max-content; padding-right: var(--marks-gap); }
+body.page-quality .marks-is-animated .profile-marks-grid figure { flex: 0 0 var(--marks-card-width); width: var(--marks-card-width); min-height: 282px; }
+body.page-quality .marks-is-animated .profile-marks-grid figcaption strong { min-height: 45px; }
+body.page-quality .marks-is-animated .profile-marks-grid img { object-fit: contain; }
+
+/* Each group includes its trailing gap, making both halves exactly equal. */
+@keyframes quality-marks-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+@media (max-width: 600px) {
+  body.page-quality .marks-is-animated { --marks-gap: 16px; --marks-card-width: min(240px, calc(100vw - 92px)); }
+  body.page-quality .marks-is-animated .profile-marks-grid figure { min-height: 256px; padding: 20px 16px; }
+  body.page-quality .marks-is-animated .profile-marks-grid figure > div { height: 126px; margin-bottom: 16px; }
+  body.page-quality .marks-is-animated .profile-marks-grid figcaption strong { min-height: 40px; font-size: 14px; }
+  body.page-quality .marks-is-animated .profile-marks-grid figcaption span { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-quality .marks-track { animation: none !important; transform: none !important; }
+}

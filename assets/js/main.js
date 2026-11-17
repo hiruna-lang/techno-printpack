@@ -34,8 +34,9 @@ dropdowns.forEach(item=>{
 });
 const sentinel=document.createElement('div');sentinel.style.cssText='position:absolute;top:80px;width:1px;height:1px;pointer-events:none';document.body.prepend(sentinel);
 if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>document.querySelector('.header').classList.toggle('stuck',!entry.isIntersecting)).observe(sentinel);
-document.querySelector('.top').addEventListener('click',()=>{window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'});document.querySelector('.brand').focus({preventScroll:true});});
-document.querySelector('#year').textContent=new Date().getFullYear();
+document.querySelector('.top')?.addEventListener('click',()=>{window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'});document.querySelector('.brand').focus({preventScroll:true});});
+const footerYear=document.querySelector('#year');
+if(footerYear)footerYear.textContent=new Date().getFullYear();
 if(window.lucide)lucide.createIcons();
 // The homepage product showcase is enhanced by home-banner.js.
 if(window.Swiper&&document.querySelector('.swiper'))new Swiper('.swiper',{slidesPerView:1,spaceBetween:24,speed:reducedMotion.matches?0:500,navigation:{nextEl:'.slide-next',prevEl:'.slide-prev'},keyboard:{enabled:true,onlyInViewport:true},a11y:{enabled:true},breakpoints:{701:{slidesPerView:2},1100:{slidesPerView:3}}});

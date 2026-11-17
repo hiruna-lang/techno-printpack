@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 760" fill="none" aria-hidden="true">
+  <g stroke="#F5F6F8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Open corrugated carton. Flaps deliberately extend beyond the canvas. -->
+    <path d="M40 255 210 160 380 255 210 350 40 255Z"/>
+    <path d="M40 255V585L210 680 380 585V255"/>
+    <path d="M210 350V680"/>
+    <path d="M40 255-30 165 140 70 210 160"/>
+    <path d="m210 160 70-90 170 95-70 90"/>
+    <path d="m40 255-95 60 170 95 95-60"/>
+    <path d="m210 350 95 60 170-95-95-60"/>
+    <!-- Board edge: one restrained offset makes the wall thickness legible. -->
+    <path d="M47 260V581L210 672 373 581V260" stroke-width="1.1" stroke-opacity=".65"/>
+    <path d="M210 358V672" stroke-width="1.1" stroke-opacity=".65"/>
+    <!-- Fold scores follow the existing carton edges rather than extra motifs. -->
+    <path d="m48 246 162-90 162 90M48 269l154 86m16 0 154-86" stroke-width="1.1" stroke-dasharray="6 10" stroke-opacity=".6"/>
+    <path d="M56 575 197 654M224 654l141-79" stroke-width="1.1" stroke-opacity=".45"/>
+  </g>
+  <path d="M40 255V585L210 680V350L115 410-55 315l95-60Z" fill="#FFFFFF" fill-opacity=".035"/>
+  <path d="M210 350V680L380 585V255L305 410l-95-60Z" fill="#FFFFFF" fill-opacity=".055"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 150" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="side" x1="450" y1="55" x2="450" y2="109" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9FAFB"/>
+      <stop offset=".42" stop-color="#E8EBED"/>
+      <stop offset="1" stop-color="#D1D7DB"/>
+    </linearGradient>
+    <radialGradient id="surface" cx="0" cy="0" r="1" gradientTransform="translate(410 37) scale(495 77)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".68" stop-color="#FAFBFB"/>
+      <stop offset="1" stop-color="#E8ECEF"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="40" y1="54" x2="860" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B77C2D"/>
+      <stop offset=".23" stop-color="#E3B868"/>
+      <stop offset=".5" stop-color="#D99D3C"/>
+      <stop offset=".77" stop-color="#E6BF75"/>
+      <stop offset="1" stop-color="#B67924"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="61" width="900" height="89" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <linearGradient id="edge" x1="450" y1="60" x2="450" y2="111" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#B5BFC6" stop-opacity=".4"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="450" cy="108" rx="410" ry="16" fill="#102A40" fill-opacity=".17" filter="url(#shadow)"/>
+  <path d="M40 54C40 25.833 223.563 3 450 3C676.437 3 860 25.833 860 54V79C860 107.167 676.437 130 450 130C223.563 130 40 107.167 40 79V54Z" fill="url(#side)"/>
+  <path d="M40 55V79C40 107.167 223.563 130 450 130C676.437 130 860 107.167 860 79V55" stroke="url(#edge)" stroke-width="1.2"/>
+  <ellipse cx="450" cy="54" rx="410" ry="51" fill="url(#surface)" stroke="url(#rim)" stroke-width="2.5"/>
+  <path d="M43 56C52.067 83.16 230.6 104 450 104C669.4 104 847.933 83.16 857 56" stroke="#F2D7A8" stroke-width="1" stroke-opacity=".72"/>
+</svg>

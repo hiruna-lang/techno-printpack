@@ -12,7 +12,7 @@ The user-supplied **Technopack 2.pdf** is the primary source for packaging-compa
 
 ## Pages and preview
 
-- `index.html`: Home, with automatic manufacturing-photo crossfades.
+- `index.html`: Home, with a six-image automatic packaging carousel.
 - `about.html`: Company overview, actual vision, focus, commitments and group details.
 - `products.html`: Ten product lines, category filters, carton structures and PVC formats.
 - `capabilities.html`: Printing, die-cutting, structures, finishing, flutes and board options.
@@ -54,7 +54,7 @@ Original company images under `images/` remain untouched. Existing 640px/1600px 
 
 `assets/media/profile/` contains examples extracted from the company profile, labelled as examples rather than specific stock packshots. Original vector diagrams are labelled as illustrations. Replace them with approved product packshots when available, updating alt text, dimensions and captions.
 
-The homepage photos rotate every five seconds with a one-second crossfade and a small pause/play control. Autoplay stops for reduced-motion preferences and hidden tabs; the first image remains visible without JavaScript.
+The six homepage product images change every five seconds with a 1.2-second crossfade and gentle zoom/movement. There are no carousel arrows, dots or manual controls. The heading, description and CTA buttons stay fixed. Autoplay and in-flight image motion pause when the tab is inactive or the hero is offscreen; reduced-motion visitors see a static image. The first image remains visible without JavaScript.
 
 ## Enquiries and WhatsApp
 
@@ -84,17 +84,55 @@ The source check verifies all ten products, eight sectors, structures, material/
 
 No enquiry is sent in testing. Lighthouse scores have not been measured and are not guaranteed. Hosting, third-party fonts/libraries/maps and network conditions affect final performance.
 
-### Homepage hero video
-The homepage uses `assets/video/techno-industries-hero.mp4` (the supplied 1080p video) with muted inline looping playback. Replace that file to update the footage and update `techno-industries-hero-poster.webp` with a matching still. The original on E: is preserved. `tools/company_profile_content.py` owns the video markup; `assets/js/main.js` handles pause/play, hidden tabs and reduced motion. Reduced-motion visitors see the poster until they choose Play.
+### Original hero video asset
+The previously supplied video remains preserved in `assets/video/`; the current homepage displays the six corrugated packaging images instead.
 
 ### Reference-led corporate refresh
-The current presentation follows the conventional corporate layout direction of https://synergyiso.lk/, adapted to Techno Industries branding and verified packaging content. The final composition is in `tools/corporate_refresh.py`, loaded after the company profile layer. Shared visual rules are in `assets/css/corporate-refresh.css` (loaded last). The homepage retains the supplied video, with open industry, company, product, manufacturing and contact sections. All eight packaging pages share the refined navigation and light footer. The Farm site remains independent. Run `python tools/build_site.py` after editing authoring sources; do not edit generated HTML alone.
+The current presentation follows the conventional corporate layout direction of https://synergyiso.lk/, adapted to Techno Industries branding and verified packaging content. The final composition is in `tools/corporate_refresh.py`, loaded after the company profile layer. Shared page rules are in `assets/css/corporate-refresh.css`, with additional homepage and footer styles loaded afterwards. The homepage has open industry, company, product, manufacturing and contact sections. All eight packaging pages share the refined navigation and corporate footer. The Farm site remains independent. Update authoring sources alongside the rendered HTML; avoid rebuilding over independent direct page edits.
 
 ### Owner photograph
 The user identified `factory-111A1078-1600.webp` as the company owner's photograph. The About page now includes it in the Leadership section (`about.html#leadership`). A separate, gently brightened and colour-balanced version was made using the built-in image editing tool. Original RAW and WebP files remain untouched. The enhanced master is `assets/media/owner-portrait-master.png`; responsive website exports are `owner-portrait-1600.webp` and `owner-portrait-640.webp` in the same directory. The exact edit prompt is recorded in `tools/owner-portrait-edit-notes.txt`. No name, personal message or additional professional title was supplied or invented.
 
 
 ### Homepage packaging banner (current)
-The homepage banner uses the existing six product images, with a scoped navy/amber/neutral design and larger, high-contrast text. Edit `tools/templates/home-hero.html` for the source markup, `assets/css/home-banner.css` for its layout and typography, and `assets/js/home-banner.js` for its automatic image crossfade. `tools/corporate_refresh.py` reads this template when generating the homepage. The first image and all content are usable without JavaScript. The slideshow has a pause control, respects reduced motion and pauses outside the viewport or in a hidden tab.
+The homepage banner uses the existing six product images, with a scoped navy/amber/neutral design and larger, high-contrast text. Edit `tools/templates/home-hero.html` for the source markup, `assets/css/home-banner.css` for its layout and typography, and `assets/js/home-banner.js` for its automatic image crossfade. `tools/corporate_refresh.py` reads this template when generating the homepage. The first image and all content are usable without JavaScript. The slideshow has no manual controls, respects reduced motion and pauses outside the viewport or in a hidden tab.
 
 Original PNGs in `assets/media/hero-products/` are preserved; 640px and 1024px WebP copies reduce download size. Only the first image loads immediately; subsequent images load as needed. The former JS-created hero and overlapping feature strip have been replaced by static, accessible HTML. Contact and capability page edits made directly in HTML were preserved during this update; the full-site generator was not run.
+
+
+### Homepage colour system
+`assets/css/home-theme.css` unifies the homepage navigation, buttons, headings, section surfaces and icons; the shared `footer.css` follows it. Colours: navy `#0F2A43`, amber `#D98A1F`, white and neutral `#F5F6F8`; body copy uses `#536372`. Primary actions share amber backgrounds and navy text. The product images change automatically without visible captions. The current hero uses the supplied reference's pale-grey curves, navy studio wall and realistic white pedestal; the second headline line is charcoal. Theme rules are scoped to `body.page-index`.
+
+
+### Product display scene
+The homepage product scene is styled in `assets/css/home-theme.css` and uses `assets/media/hero-products/reference-hero-background-1838.webp`, with 1200px and 800px responsive exports. This is a decorative generated studio background based on the user's supplied UI reference, not a company-facility photograph. The approximately 22KB desktop background contains the grey curves, silver-edged navy wall, stone pedestal and its floor shadow. Products and all text remain separate HTML elements.
+
+The backdrop and product stage use the same percentage coordinates on desktop so that boxes remain centred on the pedestal at every screen width. On mobile the same background is cropped behind the stacked product scene. Product images always use `object-fit: contain`; their originals, dimensions, automatic 5-second schedule and 1.2-second transitions are unchanged. Reduced motion and inactive-tab behaviour remain supported. No captions or manual controls are added.
+
+The master is `assets/media/hero-products/reference-hero-background-master.png`; the built-in image-generation mode and exact prompt are recorded in `tools/reference-hero-background-notes.txt`. Earlier studio and SVG assets are preserved but no longer referenced in the homepage. The navbar, hero wording, CTA markup and other sections were preserved. Update both `tools/templates/home-hero.html` and `index.html` for local hero markup changes; avoid running the full-site generator over independent direct HTML edits.
+
+### Shared company footer
+
+The homepage closes with a compact light enquiry band before the navy footer. Its source is `tools/templates/home-enquiry.html`, read by `tools/corporate_refresh.py`; the scoped layout is in `assets/css/home-theme.css`. It uses navy text and one amber quotation link, aligned to the shared content width. Contact numbers and email remain together in the footer. The former dark photographic contact banner has been replaced; its original factory photograph is preserved.
+
+All eight Techno Industries pages use `tools/templates/footer.html`. The compact navy footer groups the official logo, short company description and quotation button with company links, packaging categories, and verified phone/email/address details. The original black/blue logo is preserved on a light plate, with fine vertical column dividers. Colours are navy `#0F2A43`, neutral `#F5F6F8` and amber `#D98A1F`. The footer makes no unverified social, WhatsApp or opening-hour claims.
+
+`assets/css/footer.css` loads after page styles and is scoped to `.site-footer`. Decorative carton watermarks come from the lightweight vector `assets/icons/footer-packaging-watermark.svg`; CSS positions mirrored copies at the outer edges with low opacity and no pointer interaction. Desktop columns become two columns on tablet, then stacked branding and contact details around two navigation columns on mobile. Mobile controls are at least 44px high. Footer links work without JavaScript; `main.js` keeps the current year up to date and tolerates the removed back-to-top control. Product category links use the catalogue's existing hash filtering. The independently branded Farm and Grand Techno pages retain their own footers.
+
+The closing strip contains only the copyright and the user-requested credit, “Website developed by Nexora Digital Solutions”. The former bottom tagline, decorative symbol, Farm link and back-to-top button were removed. Copyright has no forced line break; both lines wrap naturally on narrow screens.
+
+After editing the shared template, update only the footer without rebuilding any page bodies:
+
+```powershell
+python tools/sync_footer.py
+python tools/sync_footer.py --check
+python tools/check_footer.py http://127.0.0.1:5500
+```
+
+The full builder also reads this footer template. Footer QA checks all eight pages at seven widths, compact desktop height, updated credit/copyright, local links and category targets, mobile target sizes, keyboard focus and no-JavaScript navigation. It does not send messages or modify content.
+
+### Quality-page marks animation
+
+The four existing marks on `quality.html#quality-industry-marks` use a slow, seamless rightward loop. Logos stay upright and use `object-fit: contain`; their captions and the organization-note text retain their original meaning. `assets/css/quality-marks.css` controls the 64-second linear, transform-only animation and responsive cards; `assets/js/quality-marks.js` progressively enhances the original grid. These files load only on the Quality page, including in the authoring generator.
+
+The loop is fully automatic, with no manual controls or hover stops. Motion stops only while the section is off-screen or the tab is inactive. Reduced-motion users and visitors without JavaScript receive the original static grid with all four marks. Logos are prepared near the viewport before animation starts; the duplicate loop group is hidden from assistive technology and has no duplicate IDs or interactive elements. Original logo files, certification wording and the EDB/CEA organization-logo disclaimer are unchanged.

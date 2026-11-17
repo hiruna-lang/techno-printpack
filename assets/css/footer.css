@@ -1,0 +1,103 @@
+/* Corporate footer: packaging linework, restrained dividers and clear actions. */
+body footer.site-footer {
+  --sf-navy: #0f2a43;
+  --sf-white: #f5f6f8;
+  --sf-muted: #bdc9d4;
+  --sf-gold: #d98a1f;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  overflow: clip;
+  padding: 0;
+  background: var(--sf-navy);
+  color: var(--sf-white);
+  border-top: 3px solid var(--sf-gold);
+  font-family: var(--body, 'Open Sans', Arial, sans-serif);
+}
+/* Decorative only: open cartons and fold lines replace the reference's leaves. */
+body .site-footer::before, body .site-footer::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 420px;
+  height: 760px;
+  background: url('../icons/footer-packaging-watermark.svg') center / contain no-repeat;
+  opacity: .085;
+  pointer-events: none;
+}
+body .site-footer::before { left: -250px; top: -145px; transform: rotate(-12deg); }
+body .site-footer::after { right: -250px; top: -80px; transform: scaleX(-1) rotate(-12deg); }
+body .site-footer .sf-directory, body .site-footer .sf-bottom { position: relative; z-index: 1; }
+body .site-footer .sf-directory { display: grid; grid-template-columns: 1.4fr .85fr 1.1fr 1.28fr; padding-block: 32px 27px; }
+body .site-footer .sf-brand { min-width: 0; padding-right: 38px; }
+body .site-footer .sf-logo { display: block; width: 282px; max-width: 100%; padding: 9px 12px; border: 1px solid #fff; border-radius: 2px; background: #fff; }
+body .site-footer .sf-logo img { width: 100%; height: auto; object-fit: contain; }
+body .site-footer .sf-summary { max-width: 290px; margin: 17px 0 13px; color: #bdc9d4; font-size: 12px; line-height: 1.8; }
+body .site-footer .sf-affiliation { margin: 0 0 18px; padding-left: 10px; border-left: 2px solid #d98a1f; color: #e3b670; font-size: 11px; line-height: 1.8; }
+body .site-footer a.sf-quote { display: inline-flex; align-items: center; justify-content: space-between; gap: 22px; width: 100%; max-width: 230px; min-height: 44px; margin: 0; padding: 11px 16px; border: 1px solid #d98a1f; border-radius: 2px; background: #d98a1f; color: #0f2a43; font-size: 12px; font-weight: 700; line-height: 1.6; transition: background .2s, border-color .2s; }
+body .site-footer a.sf-quote:hover { background: #e8a547; border-color: #e8a547; color: #0f2a43; }
+body .site-footer svg { display: block; width: 19px; height: 19px; flex: 0 0 19px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+body .site-footer .sf-column { min-width: 0; padding-left: 32px; border-left: 1px solid #ffffff26; }
+body .site-footer .sf-company { padding-right: 24px; }
+body .site-footer .sf-packaging { padding-right: 28px; }
+body .site-footer .sf-column h2 { margin: 2px 0 14px; color: #f0c88a; font-size: 11px; font-weight: 700; line-height: 1.8; letter-spacing: .15em; text-transform: uppercase; }
+/* Reset global header navigation styles at every breakpoint. */
+body .site-footer nav.sf-links { position: static; display: block; width: auto; height: auto; max-height: none; overflow: visible; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; transform: none; }
+body .site-footer .sf-links ul { margin: 0; padding: 0; list-style: none; }
+body .site-footer .sf-links li { margin: 0; padding: 0; }
+body .site-footer .sf-links a { display: inline-flex; align-items: center; min-height: 33px; margin: 0; padding: 4px 0; color: #e0e7ee; font-size: 12px; line-height: 1.75; transition: color .2s; }
+body .site-footer .sf-links a:hover { color: #f0c88a; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+body .site-footer .sf-contact-row { display: flex; align-items: flex-start; gap: 10px; margin: 0 0 9px; color: #d5dfe8; font-size: 12px; font-style: normal; line-height: 1.75; }
+body .site-footer .sf-contact-row > svg { width: 29px; height: 29px; flex: 0 0 29px; margin-top: 2px; padding: 5px; border: 1px solid #e3b67066; border-radius: 50%; color: #e3b670; }
+body .site-footer .sf-contact-row > div { min-width: 0; }
+body .site-footer .sf-contact-row a { display: flex; align-items: center; min-height: 32px; margin: 0; padding: 4px 0; color: #eef3f7; font-size: 12px; line-height: 1.8; overflow-wrap: anywhere; }
+body .site-footer .sf-contact-row a:hover { color: #f0c88a; text-decoration: underline; text-underline-offset: 4px; }
+body .site-footer address.sf-contact-row { margin-bottom: 10px; padding-top: 0; }
+body .site-footer a.sf-directions { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 44px; margin: 0 0 0 39px; padding: 9px 13px; border: 1px solid #ffffff40; border-radius: 2px; color: #eef3f7; font-size: 11px; line-height: 1.7; transition: background .2s, border-color .2s; }
+body .site-footer a.sf-directions svg { width: 16px; height: 16px; flex-basis: 16px; }
+body .site-footer a.sf-directions:hover { background: #ffffff0c; border-color: #e3b670; color: #f0c88a; }
+body .site-footer .sf-bottom { border-top: 1px solid #ffffff26; }
+body .site-footer .sf-bottom-layout { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 60px; padding-block: 15px; }
+body .site-footer .sf-copyright, body .site-footer .sf-credit { margin: 0; color: #b5c3d0; font-size: 11px; line-height: 1.8; }
+body .site-footer .sf-credit span { color: #f0c88a; font-weight: 600; }
+body footer.site-footer :is(a, button):focus-visible { outline: 2px solid #f0c88a; outline-offset: 5px; }
+
+@media (max-width: 1100px) {
+  body .site-footer .sf-brand { padding-right: 28px; }
+  body .site-footer .sf-column { padding-left: 24px; }
+  body .site-footer .sf-company, body .site-footer .sf-packaging { padding-right: 20px; }
+}
+@media (max-width: 1000px) {
+  body .site-footer .sf-directory { grid-template-columns: 1fr 1fr; row-gap: 24px; padding-block: 30px; }
+  body .site-footer .sf-brand { padding-right: 40px; }
+  body .site-footer .sf-column { padding-left: 38px; }
+  body .site-footer .sf-company { padding-right: 0; }
+  body .site-footer .sf-packaging { padding: 24px 40px 0 0; border-left: 0; border-top: 1px solid #ffffff26; }
+  body .site-footer .sf-contacts { padding-top: 24px; border-top: 1px solid #ffffff26; }
+  body .site-footer .sf-links a, body .site-footer .sf-contact-row a { min-height: 44px; }
+}
+@media (max-width: 600px) {
+  body .site-footer::before, body .site-footer::after { width: 330px; height: 600px; opacity: .055; }
+  body .site-footer::before { left: -230px; top: -80px; }
+  body .site-footer::after { right: -240px; top: auto; bottom: -65px; }
+  body .site-footer .sf-directory { grid-template-columns: 1fr 1fr; gap: 0; padding-block: 24px; }
+  body .site-footer .sf-brand { grid-column: 1 / -1; padding: 0 0 22px; margin-bottom: 22px; border-bottom: 1px solid #ffffff26; }
+  body .site-footer .sf-logo { width: 282px; }
+  body .site-footer .sf-summary { max-width: 380px; margin-block: 15px 12px; font-size: 12px; }
+  body .site-footer .sf-affiliation { margin-bottom: 16px; }
+  body .site-footer a.sf-quote { max-width: none; }
+  body .site-footer .sf-company { padding: 0 18px 0 0; border: 0; }
+  body .site-footer .sf-packaging { padding: 0 0 0 19px; border-top: 0; border-left: 1px solid #ffffff26; }
+  body .site-footer .sf-column h2 { margin: 0 0 12px; font-size: 10px; letter-spacing: .11em; }
+  body .site-footer .sf-links a { min-height: 44px; font-size: 11px; }
+  body .site-footer .sf-contacts { grid-column: 1 / -1; margin-top: 22px; padding: 20px 0 0; border-left: 0; }
+  body .site-footer .sf-contact-row { margin-bottom: 8px; font-size: 12px; }
+  body .site-footer .sf-contact-row > svg { margin-top: 5px; }
+  body .site-footer .sf-contact-row a { min-height: 44px; font-size: 12px; }
+  body .site-footer .sf-address > svg { margin-top: 1px; }
+  body .site-footer .sf-bottom-layout { flex-direction: column; align-items: flex-start; gap: 4px; min-height: 0; padding-block: 13px; }
+  body .site-footer .sf-copyright, body .site-footer .sf-credit { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body .site-footer a { transition: none; }
+}

@@ -1,0 +1,12 @@
+Mode: built-in image_gen.imagegen, reference-led generation.
+Reference: the user-supplied Techno Industries homepage screenshot in this conversation.
+Purpose: decorative background only; not a company-facility photograph. The site's six existing product images remain separate HTML images.
+Master: assets/media/hero-products/reference-hero-background-master.png
+Responsive exports: reference-hero-background-1838.webp, -1200.webp, -800.webp in the same directory. Exports only resize and compress the generated master.
+
+Exact final generation prompt:
+Use case: product-mockup
+Asset type: production website hero BACKGROUND ONLY, very wide landscape, approximately 2.15:1.
+Input image 1 is a composition and material reference. Recreate ONLY the underlying studio backdrop of its hero, below its navigation. Remove ALL text, navigation, buttons, logos, icons and ALL cardboard boxes/products. The existing website will overlay its own live text and rotating product cutouts.
+Scene: premium realistic architectural product photography set. Left 46 percent is extremely pale cool grey / white usable empty space with subtle broad sweeping sculpted curves. On the right, a deep desaturated industrial navy curved wall / large arc rising off the top-right edge, following the reference precisely, with a fine silver-grey edge. No gold outlines, no pinstripes, no circular badge. Grey-white sweeping shapes also cross the very bottom. A substantial realistic white/light-grey matte stone oval cylindrical pedestal stands in the lower-right, from x=48% to x=95%, with its top ellipse centered approximately at x=73%, y=73%, and its front face ending about y=88%. The oval top is broad enough for a group of three product boxes; it is EMPTY. Match the screenshot's elevated product camera angle, pedestal depth and softly textured stone surface. Soft realistic contact shadow beneath pedestal on neutral light grey floor. Light from upper left, softly shaded navy wall and natural studio depth, understated luxury. Keep the white left text area unobstructed from y=14% to y=83%.
+Constraints: background only, no boxes or other products, no copy, no typography, no text, no UI, no people, no icons, no watermark, no golden rim, no lines or graphic stripes. Follow the reference's neutral white-grey and deep navy palette and layout faithfully; this should feel like the same background without any of the content over it.

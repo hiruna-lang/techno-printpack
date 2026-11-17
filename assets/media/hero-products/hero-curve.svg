@@ -1,0 +1,12 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" preserveAspectRatio="none" fill="none">
+  <defs>
+    <linearGradient id="navy" x1="205" y1="65" x2="610" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#173e5f"/><stop offset="1" stop-color="#0f2a43"/></linearGradient>
+    <linearGradient id="amber" x1="65" y1="370" x2="470" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#b57820"/><stop offset=".6" stop-color="#e6b660"/><stop offset="1" stop-color="#d98a1f"/></linearGradient>
+    <linearGradient id="fade" x1="590" y1="105" x2="455" y2="340" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity=".7"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+    <clipPath id="panel"><path d="M48 450C20 292 106 116 290 55C427 10 581 56 655 159C713 242 704 377 647 454C474 510 220 510 48 450Z"/></clipPath>
+    <mask id="line-fade"><rect width="720" height="560" fill="url(#fade)"/></mask>
+  </defs>
+  <path d="M48 450C20 292 106 116 290 55C427 10 581 56 655 159C713 242 704 377 647 454C474 510 220 510 48 450Z" fill="url(#navy)"/>
+  <path d="M48 450C20 292 106 116 290 55C359 32 430 32 491 49" stroke="url(#amber)" stroke-width="5"/>
+  <g clip-path="url(#panel)" mask="url(#line-fade)" stroke="#6ca4ca" stroke-width="1" opacity=".55"><path d="m470 30-220 220M492 30 272 250M514 30 294 250M536 30 316 250M558 30 338 250M580 30 360 250M602 30 382 250M624 30 404 250M646 30 426 250M668 30 448 250M690 30 470 250M712 30 492 250M734 30 514 250M756 30 536 250"/></g>
+</svg>

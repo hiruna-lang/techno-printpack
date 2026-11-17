@@ -1,0 +1,249 @@
+/* One homepage palette, shared from navigation through footer. */
+body.page-index {
+  --navy: #0f2a43;
+  --home-navy: #0f2a43;
+  --amber: #d98a1f;
+  --home-amber: #d98a1f;
+  --ink: #17212b;
+  --muted: #536372;
+  --paper: #f5f6f8;
+  --line: #e0e5ea;
+  color: var(--ink);
+  background: #fff;
+}
+
+/* Solid, quiet header. The active link uses an accent line, not another text colour. */
+body.page-index .utility-bar { background: var(--navy); color: #fff; }
+body.page-index .utility-bar a:hover { color: #fff; text-decoration: underline; }
+body.page-index .header {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  box-shadow: none;
+}
+body.page-index .header.stuck { box-shadow: 0 3px 14px #0f2a4310; }
+body.page-index #navigation > a:not(.button),
+body.page-index #navigation .nav-dropdown-heading > a {
+  color: var(--navy);
+  text-shadow: none;
+  font-weight: 600;
+}
+body.page-index #navigation > a:not(.button)[aria-current="page"],
+body.page-index #navigation .nav-dropdown-heading > a[aria-current="page"] {
+  color: var(--navy);
+  box-shadow: inset 0 -2px var(--amber);
+}
+body.page-index #navigation .dropdown-toggle { color: var(--navy); }
+body.page-index #navigation .dropdown-panel {
+  background: #fff;
+  border-color: var(--line);
+  border-top-color: var(--amber);
+  color: var(--navy);
+}
+body.page-index #navigation .dropdown-panel a,
+body.page-index #navigation .company-option { color: var(--navy); }
+body.page-index #navigation .dropdown-panel a:hover,
+body.page-index #navigation .company-option:hover { background: var(--paper); color: var(--navy); }
+
+/* The same amber/navy treatment for every primary action. */
+body.page-index .button,
+body.page-index #navigation > .button,
+body.page-index .banner-button-primary {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: var(--navy);
+  box-shadow: none;
+}
+body.page-index .button:hover,
+body.page-index #navigation > .button:hover,
+body.page-index .banner-button-primary:hover {
+  background: #cf841d;
+  border-color: #cf841d;
+  color: var(--navy);
+}
+body.page-index .banner-button-secondary {
+  background: #fff;
+  border-color: #bcc7d1;
+  color: var(--navy);
+}
+body.page-index .banner-button-secondary:hover {
+  background: var(--paper);
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+/* White product display; readable navy typography throughout the opening area. */
+body.page-index .packaging-banner { background: #fff; color: var(--navy); border-color: var(--line); }
+body.page-index .packaging-banner h1,
+body.page-index .packaging-banner h1 > span,
+body.page-index .packaging-banner .banner-eyebrow { color: var(--navy); }
+body.page-index .banner-eyebrow > span { background: var(--amber); }
+body.page-index .banner-description,
+body.page-index .banner-assurance { color: var(--muted); }
+body.page-index .banner-assurance svg { stroke: var(--navy); }
+body.page-index .packaging-highlights { background: #fff; border-color: var(--line); }
+body.page-index .packaging-highlights a,
+body.page-index .packaging-highlights strong { color: var(--navy); }
+body.page-index .packaging-highlights a > svg { stroke: var(--navy); }
+body.page-index .packaging-highlights a > span > span { color: var(--muted); }
+
+/* Alternating neutral surfaces, with no blue-grey panels or brown headings. */
+body.page-index h2,
+body.page-index h3,
+body.page-index .corp-solutions h3,
+body.page-index .corp-about h3 { color: var(--navy); }
+body.page-index p { color: var(--muted); }
+body.page-index .eyebrow { color: var(--navy); }
+body.page-index .eyebrow::after { background: var(--amber); }
+body.page-index .corp-section { background: #fff; }
+body.page-index .corp-section.corp-soft,
+body.page-index .corp-marks.corp-soft { background: var(--paper); }
+body.page-index .corp-about-links article {
+  background: #fff;
+  border: 1px solid var(--line);
+}
+body.page-index .corp-sector-list a,
+body.page-index .corp-link,
+body.page-index .corp-about-links article > svg,
+body.page-index .corp-reasons article > svg,
+body.page-index .corp-sector-list svg { color: var(--navy); }
+body.page-index .corp-link { border-color: #b7c2cd; }
+body.page-index .corp-link:hover { color: var(--navy); border-color: var(--amber); }
+body.page-index .corp-photo-caption { background: #fff; color: var(--muted); border-left-color: var(--amber); }
+body.page-index .corp-process li { border-color: var(--line); }
+body.page-index .corp-process li > span { color: #6f8293; }
+
+/* A compact light enquiry band provides a clear transition into the navy footer. */
+body.page-index .home-enquiry {
+  padding: 42px 0;
+  border-top: 1px solid var(--line);
+  background: #fff;
+  color: var(--navy);
+}
+body.page-index .home-enquiry-layout { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 52px; align-items: center; }
+body.page-index .home-enquiry-copy { min-width: 0; }
+body.page-index .home-enquiry-label { display: flex; align-items: center; gap: 11px; margin: 0 0 11px; color: var(--navy); font-size: 10px; font-weight: 700; line-height: 1.7; letter-spacing: .11em; text-transform: uppercase; }
+body.page-index .home-enquiry-label::before { content: ''; width: 26px; height: 2px; flex: 0 0 26px; background: var(--amber); }
+body.page-index .home-enquiry h2 { margin: 0 0 10px; color: var(--navy); font-size: 30px; font-weight: 600; line-height: 1.3; letter-spacing: -.035em; }
+body.page-index .home-enquiry-description { max-width: 690px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+body.page-index .home-enquiry-button { min-height: 48px; padding: 13px 20px; gap: 30px; white-space: nowrap; }
+body.page-index .home-enquiry-button svg { display: block; width: 19px; height: 19px; flex: 0 0 19px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+body.page-index .home-enquiry-button:hover svg { transform: translate(2px, -2px); }
+
+@media (max-width: 1100px) {
+  body.page-index .home-enquiry-layout { gap: 32px; }
+  body.page-index .home-enquiry h2 { font-size: 28px; }
+}
+@media (max-width: 800px) {
+  body.page-index .home-enquiry { padding-block: 33px; }
+  body.page-index .home-enquiry-layout { grid-template-columns: 1fr; gap: 22px; }
+  body.page-index .home-enquiry-button { justify-self: start; }
+}
+@media (max-width: 600px) {
+  body.page-index .home-enquiry { padding-block: 29px; }
+  body.page-index .home-enquiry h2 { max-width: 400px; font-size: 26px; }
+  body.page-index .home-enquiry-label { font-size: 9px; letter-spacing: .08em; }
+  body.page-index .home-enquiry-button { justify-self: stretch; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-index .home-enquiry-button svg { transition: none; }
+}
+
+body.page-index :is(a, button):focus-visible { outline-color: var(--navy); }
+
+/* Reference-led studio scene. Backdrop and products share hero coordinates. */
+body.page-index .packaging-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f4f5f8;
+  border-bottom: 0;
+}
+.packaging-banner .banner-copy { position: relative; z-index: 2; }
+.packaging-banner .banner-showcase { position: static; isolation: auto; overflow: visible; }
+.packaging-banner .banner-showcase .banner-studio {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Stretch only the architectural background, never the product images. */
+  object-fit: fill;
+  object-position: center;
+  pointer-events: none;
+  z-index: 0;
+}
+body.page-index .packaging-banner .banner-layout {
+  position: static;
+  min-height: 638px;
+  padding-top: 44px;
+  padding-bottom: 70px;
+  gap: 40px;
+}
+body.page-index .packaging-banner h1 { font-weight: 700; line-height: 1.08; }
+body.page-index .packaging-banner h1 > span { display: block; color: #343434; }
+.packaging-banner .banner-description { max-width: 490px; }
+.packaging-banner .banner-showcase { align-self: stretch; }
+.packaging-banner .banner-product-stage {
+  position: absolute;
+  left: 47%;
+  top: 6.5%;
+  width: 46.5%;
+  height: 72%;
+  aspect-ratio: auto;
+  z-index: 1;
+}
+.packaging-banner .banner-product {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  z-index: 2;
+}
+.packaging-banner .banner-product.is-active { animation: none; }
+
+
+body.page-index .packaging-highlights { position: relative; z-index: 3; background: var(--paper); padding-bottom: 18px; border: 0; }
+body.page-index .packaging-highlights > .container {
+  position: relative;
+  width: min(1240px, calc(100% - 48px));
+  margin-top: -30px;
+  padding: 27px 25px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e5e8ed;
+  border-bottom: 3px solid var(--amber);
+  box-shadow: 0 12px 28px #0f2a430b;
+}
+body.page-index .packaging-highlights a > svg { stroke: #ad7016; }
+body.page-index .packaging-highlights a:first-child { padding-left: 0; }
+body.page-index .packaging-highlights a:last-child { padding-right: 0; }
+
+@media (max-width:1100px) {
+  body.page-index .packaging-banner .banner-layout { min-height: 570px; gap: 25px; padding-top: 35px; padding-bottom: 65px; }
+  
+  
+  body.page-index .packaging-highlights > .container { padding: 24px 20px; }
+}
+@media (max-width:760px) {
+  body.page-index .packaging-banner .banner-layout { min-height: 0; gap: 22px; padding-top: 36px; padding-bottom: 45px; }
+  
+  .packaging-banner .banner-showcase { position: relative; align-self: auto; aspect-ratio: 1.3; max-width: none; }
+  .packaging-banner .banner-showcase .banner-studio { object-fit: cover; object-position: right bottom; }
+  .packaging-banner .banner-product-stage { left: 1%; top: 0; width: 88%; height: 79%; }
+  
+  
+  body.page-index .packaging-highlights > .container { width: calc(100% - 32px); margin-top: -18px; padding: 22px 18px; border-radius: 10px; }
+  body.page-index .packaging-highlights a:nth-child(odd) { padding-left: 0; }
+  body.page-index .packaging-highlights a:nth-child(even) { padding-right: 0; }
+}
+@media (max-width:430px) {
+  body.page-index .packaging-banner .banner-layout { padding-top: 31px; gap: 16px; padding-bottom: 39px; }
+  .packaging-banner .banner-showcase { aspect-ratio: 1.12; }
+  
+  
+  body.page-index .packaging-highlights > .container { padding: 19px 15px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .packaging-banner .banner-product.is-active { animation: none; }
+}
+
