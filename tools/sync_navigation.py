@@ -1,7 +1,7 @@
-"""Update shared headers and navigation stylesheet order across all pages including industry destinations."""
+"""Update shared headers, footers and navigation stylesheet order across all pages including industry destinations."""
 from pathlib import Path
 import re, sys
-from navigation_markup import render_header
+from navigation_markup import render_header, render_footer
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ['index', 'about', 'products', 'capabilities', 'industries', 'quality', 'quotation', 'contact']
@@ -13,6 +13,8 @@ for name in PAGES:
     before = path.read_text(encoding='utf-8')
     after, count = re.subn(r'<header class="header">.*?</header>', lambda _: render_header(name), before, count=1, flags=re.S)
     assert count == 1, name
+    after, f_count = re.subn(r'<footer class="site-footer".*?</footer>', lambda _: render_footer(), after, count=1, flags=re.S)
+    assert f_count == 1, f"Footer missing in {name}"
     css = '<link rel="stylesheet" href="assets/css/navigation.css">'
     assert after.count(css) == 1, name
     after = after.replace(css, '').replace('<link rel="stylesheet" href="assets/css/brand-theme.css">', '<link rel="stylesheet" href="assets/css/brand-theme.css">' + css, 1)
@@ -22,7 +24,7 @@ for name in PAGES:
     assert first_library in after, name
     after = after.replace(first_library, script + first_library, 1)
     if check:
-        assert after == before, f'Navigation out of sync: {name}'
+        assert after == before, f'Navigation or footer out of sync: {name}'
     elif after != before:
         path.write_text(after, encoding='utf-8')
 
@@ -37,6 +39,16 @@ if grand_path.exists():
         grand_after = re.sub(r'<link rel="stylesheet" href="[^"]*farm-navigation\.css[^"]*">\s*', '', grand_after)
         grand_after = re.sub(r'<script defer src="[^"]*farm-navigation\.js[^"]*"></script>\s*', '', grand_after)
         
+        # Replace footer with unified corporate site-footer
+        grand_footer = render_footer(base_path='../')
+        grand_after, f_count = re.subn(r'<footer.*?</footer\s*>', lambda _: grand_footer, grand_after, count=1, flags=re.S)
+        assert f_count == 1, 'Grand Techno footer replacement failed'
+        
+        # Ensure footer.css is in head
+        footer_css = '<link rel="stylesheet" href="../assets/css/footer.css">'
+        if footer_css not in grand_after:
+            grand_after = grand_after.replace('</head>', footer_css + '</head>', 1)
+
         css = '<link rel="stylesheet" href="../assets/css/navigation.css">'
         if css in grand_after:
             grand_after = grand_after.replace(css, '')
@@ -59,6 +71,16 @@ if farm_path.exists():
         farm_after = re.sub(r'<link rel="stylesheet" href="[^"]*farm-navigation\.css[^"]*">\s*', '', farm_after)
         farm_after = re.sub(r'<script defer src="[^"]*farm-navigation\.js[^"]*"></script>\s*', '', farm_after)
 
+        # Replace footer with unified corporate site-footer
+        farm_footer = render_footer(base_path='../')
+        farm_after, f_count = re.subn(r'<footer.*?</footer\s*>', lambda _: farm_footer, farm_after, count=1, flags=re.S)
+        assert f_count == 1, 'Farm footer replacement failed'
+
+        # Ensure footer.css is in head
+        footer_css = '<link rel="stylesheet" href="../assets/css/footer.css">'
+        if footer_css not in farm_after:
+            farm_after = farm_after.replace('</head>', footer_css + '</head>', 1)
+
         css = '<link rel="stylesheet" href="../assets/css/navigation.css">'
         if css in farm_after:
             farm_after = farm_after.replace(css, '')
@@ -70,4 +92,4 @@ if farm_path.exists():
         if not check and farm_after != farm_before:
             farm_path.write_text(farm_after, encoding='utf-8')
 
-print(('Checked' if check else 'Synced') + ' shared navigation across all pages including industry destinations.')
+print(('Checked' if check else 'Synced') + ' shared navigation and footer across all pages including industry destinations.')
