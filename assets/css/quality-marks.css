@@ -23,7 +23,7 @@ body.page-quality .marks-is-animated .profile-marks-grid img { object-fit: conta
 /* Compact rail on the homepage's shared white assurance row. */
 body.page-index .corp-marks .marks-viewport { min-width: 0; background: #fff; }
 body.page-index .corp-marks .marks-clone[hidden] { display: none; }
-body.page-index .corp-marks.marks-is-animated { --home-mark-width: clamp(150px, calc((100vw - 128px) / 4), 180px); --home-mark-gap: 20px; }
+body.page-index .corp-marks.marks-is-animated { --home-mark-width: max(160px, calc((min(1180px, calc(100vw - 48px)) - 80px) / 4)); --home-mark-gap: 20px; }
 body.page-index .corp-marks.marks-is-animated .marks-viewport { overflow: hidden; padding-block: 8px; -webkit-mask-image: linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent); mask-image: linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent); }
 body.page-index .corp-marks.marks-is-animated .marks-track { display: flex; width: max-content; animation: quality-marks-right 64s linear infinite; animation-play-state: paused; will-change: transform; }
 body.page-index .corp-marks.marks-is-animated[data-marks-running="true"] .marks-track { animation-play-state: running; }
@@ -31,9 +31,6 @@ body.page-index .corp-marks.marks-is-animated .corp-mark-images { display: flex;
 body.page-index .corp-marks.marks-is-animated .corp-mark-images figure { display: flex; flex: 0 0 var(--home-mark-width); flex-direction: column; align-items: center; justify-content: center; width: var(--home-mark-width); min-height: 140px; padding: 10px 8px; }
 body.page-index .corp-marks.marks-is-animated .corp-mark-images img { width: 135px; max-width: 100%; height: 90px; object-fit: contain; }
 body.page-index .corp-marks.marks-is-animated .corp-mark-images figcaption { margin-top: 13px; font-size: 10px; line-height: 1.6; }
-@media (max-width: 900px) {
-  body.page-index .corp-marks.marks-is-animated { --home-mark-width: max(150px, calc((100vw - 128px) / 4)); }
-}
 @media (max-width: 600px) {
   body.page-quality .marks-is-animated { --marks-gap: 16px; --marks-card-width: min(240px, calc(100vw - 92px)); }
   body.page-quality .marks-is-animated .profile-marks-grid figure { min-height: 256px; padding: 20px 16px; }

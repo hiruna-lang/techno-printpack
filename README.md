@@ -109,7 +109,7 @@ The desktop hero now budgets its height against the viewport so the complete cap
 
 
 ### Homepage colour system
-`assets/css/home-theme.css` provides homepage layout details. The shared `assets/css/brand-theme.css` loads last across all eight main company pages and applies the 60/30/10 colour allocation through actual navy and gold section/panel surfaces. Colours: navy `#0F2A43`, amber `#D98A1F`, white and neutral `#F5F6F8`; body copy uses `#536372`. Gold enquiry bands on inner pages use navy buttons with white text; the homepage closes with coordinated white rows and one gold action. The product images change automatically without visible captions. The current hero uses the supplied reference's pale-grey curves, navy studio wall and realistic white pedestal; the second headline line is charcoal. See `COLOUR-SYSTEM.md` for the measured desktop/mobile coverage and audit method.
+`assets/css/home-theme.css` provides homepage layout details. The shared `assets/css/brand-theme.css` sets white/light-grey reading surfaces, navy structure and gold accents. `assets/css/content-actions.css` refines the content sections before the navigation stylesheet loads. Colours: navy `#0F2A43`, amber `#D98A1F`, white and neutral `#F5F6F8`; body copy uses `#536372`. Large supporting panels are neutral, with gold on buttons and small details. The homepage closes with a white quality-marks row. The product images change automatically without visible captions. The hero uses the supplied reference's pale-grey curves, navy studio wall and realistic white pedestal; the second headline line is charcoal. `COLOUR-SYSTEM.md` records the earlier coverage audit and its method.
 
 
 ### Product display scene
@@ -121,7 +121,7 @@ The master is `assets/media/hero-products/reference-hero-background-master.png`;
 
 ### Shared company footer
 
-The homepage closes with coordinated white quality and enquiry rows before the navy footer. Navy headings, short gold rules, fine dividers and one gold quotation button share the same content grid. The fixed quality heading sits beside the automatic logo rail on desktop and above it on smaller screens. The enquiry source is `tools/templates/home-enquiry.html`, read by `tools/corporate_refresh.py`; its scoped layout is in `assets/css/home-theme.css`, with shared surface colours in `assets/css/brand-theme.css`. Contact numbers and email remain together in the compact footer. The former dark photographic contact banner has been replaced; its original factory photograph is preserved.
+The homepage closes with a compact white quality-marks row before the navy footer. The heading and an outlined documentation action sit above the full-width automatic logo rail. Fine neutral dividers align the section to the content grid. On mobile the action stacks below the heading. The earlier enquiry template remains preserved in `tools/templates/home-enquiry.html`; the final content-action pass omits its duplicate quotation prompt. Layout lives in `assets/css/home-theme.css` and `assets/css/content-actions.css`, with shared surface colours in `assets/css/brand-theme.css`. Contact numbers and email remain together in the compact footer. The original factory photograph is preserved.
 
 All eight Techno Industries pages use `tools/templates/footer.html`. The compact navy footer groups the official logo, short company description and quotation button with company links, packaging categories, and verified phone/email/address details. The original black/blue logo is preserved on a light plate, with fine vertical column dividers. Colours are navy `#0F2A43`, neutral `#F5F6F8` and amber `#D98A1F`. The footer makes no unverified social, WhatsApp or opening-hour claims.
 
@@ -141,6 +141,32 @@ The full builder also reads this footer template. Footer QA checks all eight pag
 
 ### Quality and homepage marks animation
 
-The four existing marks on `quality.html#quality-industry-marks` and `index.html#home-quality-marks` use a slow, seamless rightward loop. The homepage rail shares the white section surface with its fixed heading and documentation link; softly masked edges keep the moving logos contained. Logos stay upright and use `object-fit: contain`; captions and organization-logo wording retain their original meaning. `assets/css/quality-marks.css` controls the 64-second linear, transform-only animation and responsive groups; `assets/js/quality-marks.js` progressively enhances the original markup. These files load on the homepage and Quality page, including in the authoring generator.
+The four existing marks on `quality.html#quality-industry-marks` and `index.html#home-quality-marks` use a slow, seamless rightward loop. The homepage rail spans the content width beneath its fixed heading and documentation action; softly masked edges keep the moving logos contained. Each repeated group is wide enough to cover the viewport for a seamless loop. Logos stay upright and use `object-fit: contain`; captions and organization-logo wording retain their original meaning. `assets/css/quality-marks.css` controls the 64-second linear, transform-only animation and responsive groups; `assets/js/quality-marks.js` progressively enhances the original markup. These files load on the homepage and Quality page, including in the authoring generator.
 
 The loop is fully automatic, with no manual controls or hover stops. Motion stops only while the section is off-screen or the tab is inactive. Reduced-motion users and visitors without JavaScript receive the original static grid with all four marks. Logos are prepared near the viewport before animation starts; the duplicate loop group is hidden from assistive technology and has no duplicate IDs or interactive elements. Original logo files, certification wording and the EDB/CEA organization-logo disclaimer are unchanged.
+
+### Purposeful content actions
+
+`tools/content_actions.py` is the final authoring pass for content links. Informational box structures, manufacturing strengths and quality checkpoints are static content. Repeated card-level enquiries and generic closing quotation bands are removed. Each homepage solution has one linked heading, and quality documentation has one shared contact action. Internal links use clear text labels without decorative arrow badges; the external Google Maps cue is retained.
+
+The sticky quotation action, homepage product/quotation buttons, typed product-card enquiries, manufacturing consultation, useful section links, form controls, phone/email and directions remain available. Farm produce enquiries retain their `data-produce` selection behaviour. Grand Techno content and all shared navigation/footer markup are unchanged. The former blanket CSS rule that hid every text link was removed so useful actions, including contact-message copying, work correctly.
+
+`assets/css/content-actions.css` styles the static information and closes gaps left by removed actions. It loads after the theme and before navigation. Product cards use two copy columns, and the contact map fills the row after its duplicate quote banner is removed. Company facts, all ten products and structures, eight sectors, original imagery and form options are preserved.
+
+Apply only this pass after content edits, without rebuilding complete pages:
+
+```powershell
+python tools/sync_content_actions.py
+python tools/sync_content_actions.py --check
+python tools/check_content_actions.py http://127.0.0.1:8765
+```
+
+The optional Python authoring tools require BeautifulSoup (`pip install beautifulsoup4`); static hosting has no Python dependency. The main site builder also applies this pass. Verification checks content/form preservation, responsive layouts, product filtering and preselection, draft/copy behaviour, native disclosures and the no-JavaScript view. Tests prepare enquiries locally and do not send them.
+
+### Coordinated content sections
+
+Large gold fills were replaced with light-grey/white panels for the owner commitments, material advice, quality themes, document introduction and quotation guide. The homepage production-photo caption uses the same neutral finish. The About quality band keeps the real photograph under a navy overlay with white text. Gold remains a small accent.
+
+The remaining manufacturing consultation uses a white bordered layout with a clearly visible factory-photo tile, navy copy and a navy action. On mobile the photo and full-width action stack naturally. Its earlier decorative carton illustration remains preserved but is hidden in this layout. These changes are scoped in `assets/css/brand-theme.css` and `assets/css/content-actions.css`; all content, photographs, navigation, forms and enquiry destinations are retained.
+
+Run `python tools/check_section_design.py http://127.0.0.1:8765` to check responsive section layouts, text contrast, content preservation and the full-width logo loop, including reduced-motion and no-JavaScript views.

@@ -54,6 +54,8 @@ html body .header {
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   pointer-events: none;
   isolation: isolate;
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), top 0.28s ease;
