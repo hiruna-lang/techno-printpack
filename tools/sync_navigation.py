@@ -1,11 +1,11 @@
-"""Update shared headers, footers, industrial polish and responsive asset links across all 10 pages."""
+"""Update shared headers, footers and responsive/navigation asset links across all 10 pages."""
 from pathlib import Path
 import re, sys
 from navigation_markup import render_header, render_footer
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ['index', 'about', 'products', 'capabilities', 'industries', 'quality', 'quotation', 'contact']
-ASSET_VERSION = '6'
+ASSET_VERSION = '5'
 check = '--check' in sys.argv
 
 # 1. Main company pages
@@ -17,36 +17,26 @@ for name in PAGES:
     after, f_count = re.subn(r'<footer class="site-footer".*?</footer>', lambda _: render_footer(), after, count=1, flags=re.S)
     assert f_count == 1, f"Footer missing in {name}"
 
-    # Cache-bust footer.css and brand-theme.css
+    # Cache-bust footer.css
     footer_css = f'<link rel="stylesheet" href="assets/css/footer.css?v={ASSET_VERSION}">'
     after = re.sub(r'<link rel="stylesheet" href="assets/css/footer\.css(?:\?v=[^"]*)?">', footer_css, after)
 
-    brand_css = f'<link rel="stylesheet" href="assets/css/brand-theme.css?v={ASSET_VERSION}">'
-    after = re.sub(r'<link rel="stylesheet" href="assets/css/brand-theme\.css(?:\?v=[^"]*)?">', brand_css, after)
-
-    # Cache-bust and order navigation.css right after brand-theme.css
+    # Cache-bust and order navigation.css
     nav_css = f'<link rel="stylesheet" href="assets/css/navigation.css?v={ASSET_VERSION}">'
     after = re.sub(r'<link rel="stylesheet" href="assets/css/navigation\.css(?:\?v=[^"]*)?">', '', after)
-    after = after.replace(brand_css, brand_css + nav_css, 1)
+    after = after.replace('<link rel="stylesheet" href="assets/css/brand-theme.css">', '<link rel="stylesheet" href="assets/css/brand-theme.css">' + nav_css, 1)
 
-    # Cache-bust and place industrial-polish.css then mobile-responsive.css at the end of <head>
-    polish_css = f'<link rel="stylesheet" href="assets/css/industrial-polish.css?v={ASSET_VERSION}">'
-    after = re.sub(r'<link rel="stylesheet" href="assets/css/industrial-polish\.css(?:\?v=[^"]*)?">', '', after)
-    after = after.replace('</head>', polish_css + '</head>', 1)
-
+    # Cache-bust and place mobile-responsive.css last in <head>
     mobile_css = f'<link rel="stylesheet" href="assets/css/mobile-responsive.css?v={ASSET_VERSION}">'
     after = re.sub(r'<link rel="stylesheet" href="assets/css/mobile-responsive\.css(?:\?v=[^"]*)?">', '', after)
     after = after.replace('</head>', mobile_css + '</head>', 1)
 
-    # Cache-bust navigation.js, home-banner.js, animations.js
+    # Cache-bust navigation.js
     script = f'<script defer src="assets/js/navigation.js?v={ASSET_VERSION}"></script>'
     after = re.sub(r'<script defer src="assets/js/navigation\.js(?:\?v=[^"]*)?"></script>', '', after)
     first_library = '<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>'
     assert first_library in after, name
     after = after.replace(first_library, script + first_library, 1)
-
-    after = re.sub(r'<script defer src="assets/js/home-banner\.js(?:\?v=[^"]*)?"></script>', f'<script defer src="assets/js/home-banner.js?v={ASSET_VERSION}"></script>', after)
-    after = re.sub(r'<script defer src="assets/js/animations\.js(?:\?v=[^"]*)?"></script>', f'<script defer src="assets/js/animations.js?v={ASSET_VERSION}"></script>', after)
 
     if check:
         assert after == before, f'Navigation or footer out of sync: {name}'
@@ -87,4 +77,4 @@ for page_key, rel_dir in [('grand-techno', 'grand-techno'), ('farm', 'farm')]:
     elif after != before:
         dest_path.write_text(after, encoding='utf-8')
 
-print(('Checked' if check else 'Synced') + ' shared navigation, footer, industrial polish, and responsive assets across all 10 pages.')
+print(('Checked' if check else 'Synced') + ' shared navigation, footer, and responsive assets across all 10 pages.')
