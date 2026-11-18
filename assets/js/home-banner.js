@@ -6,7 +6,7 @@
  if(stage){
   const slides=[...stage.querySelectorAll('.banner-product')];
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  const interval=5000;
+  const interval=5500;
   const failed=new Set(),loads=new Map(),pausedAnimations=new Set();
   let active=0,timer=null,deadline=0,generation=0,inView=true,pageHidden=false;
   const canRun=()=>slides.length>1&&!document.hidden&&!pageHidden&&!motion.matches&&inView;

@@ -1,152 +1,226 @@
-/* Light reading surfaces, navy structure, and gold reserved for actions/details. */
+/* ==========================================================================
+   INDUSTRIAL CORPORATE BRAND THEME
+   Refined navy (#0f2a43), crisp off-white surfaces (#f6f8fa / #ffffff),
+   and restrained industrial orange (#e05a17) reserved for actions and cues.
+   ========================================================================== */
 body {
-  --brand-white: #fff;
-  --brand-paper: #f5f6f8;
+  --brand-white: #ffffff;
+  --brand-paper: #f6f8fa;
   --brand-navy: #0f2a43;
-  --brand-gold: #d98a1f;
+  --brand-navy-mid: #1a3b59;
+  --brand-orange: #e05a17;
+  --brand-orange-hover: #c94c0f;
+  --brand-orange-soft: #f59a69;
+  --brand-gold: #e05a17;
   --navy: #0f2a43;
-  --amber: #d98a1f;
-  --paper: #f5f6f8;
+  --amber: #e05a17;
+  --paper: #f6f8fa;
   --ink: #17212b;
-  --muted: #536372;
+  --muted: #526475;
+  --line: #dde4eb;
   --about-navy: #0f2a43;
-  --about-amber: #d98a1f;
-  background: #fff;
+  --about-amber: #e05a17;
+  background: #ffffff;
 }
-body .utility-bar { background: var(--brand-navy); color: #fff; }
-body .header { background: #fff; }
-body .button, body .banner-button-primary { background: var(--brand-gold); border-color: var(--brand-gold); color: var(--brand-navy); }
-body .button:hover, body .banner-button-primary:hover { background: #e8a547; border-color: #e8a547; color: var(--brand-navy); }
-body :is(a,button,input,select,textarea):focus-visible { outline: 3px solid var(--brand-navy); outline-offset: 4px; }
-body .contact-form-actions .button { background: var(--brand-gold); border-color: var(--brand-gold); color: var(--brand-navy); }
 
+body .utility-bar { background: var(--brand-navy); color: #ffffff; }
+body .header { background: transparent; }
 
-/* Supporting enquiry areas use the same calm surfaces as the surrounding content. */
-body .cta.section { background: #f3f6f8; border-color: #dfe6ec; color: var(--brand-navy); }
-body .cta.section :is(h2,p,.eyebrow) { color: var(--brand-navy); }
-body .cta.section .eyebrow::after { background: var(--brand-gold); }
+/* Primary industrial orange actions with crisp high-contrast white type */
+body .button,
+body .banner-button-primary,
+body .contact-form-actions .button {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #ffffff;
+}
+body .button:hover,
+body .banner-button-primary:hover,
+body .contact-form-actions .button:hover {
+  background: var(--brand-orange-hover);
+  border-color: var(--brand-orange-hover);
+  color: #ffffff;
+}
+
+body .button.secondary,
+body .banner-button-secondary {
+  background: #ffffff;
+  border-color: #c5d1dc;
+  color: var(--brand-navy);
+}
+body .button.secondary:hover,
+body .banner-button-secondary:hover {
+  background: var(--brand-paper);
+  border-color: var(--brand-navy);
+  color: var(--brand-navy);
+}
+
+body :is(a, button, input, select, textarea):focus-visible {
+  outline: 2.5px solid var(--brand-orange);
+  outline-offset: 3px;
+}
+
+/* Supporting enquiry areas use calm off-white surfaces */
+body .cta.section { background: var(--brand-paper); border-color: var(--line); color: var(--brand-navy); }
+body .cta.section :is(h2, p, .eyebrow) { color: var(--brand-navy); }
+body .cta.section .eyebrow::after { background: var(--brand-orange); }
 body .cta.section .button {
-  background: var(--brand-navy); border-color: var(--brand-navy); color: #fff;
+  background: var(--brand-navy);
+  border-color: var(--brand-navy);
+  color: #ffffff;
 }
-body .cta.section .button:hover { background: #23465f; border-color: #23465f; color: #fff; }
+body .cta.section .button:hover {
+  background: var(--brand-navy-mid);
+  border-color: var(--brand-navy-mid);
+  color: #ffffff;
+}
 
-/* Home: one substantial navy story band, with light cards and real photography. */
+/* Home: one substantial navy story band with crisp photography and restrained orange details */
 body.page-index .corp-section.corp-soft:has(.corp-about) { background: var(--brand-navy); }
-body.page-index .corp-about :is(h2,h3,.eyebrow) { color: #fff; }
+body.page-index .corp-about :is(h2, h3, .eyebrow) { color: #ffffff; }
 body.page-index .corp-about p { color: #d4dfe8; }
-body.page-index .corp-about .corp-link { color: #f0c88a; border-color: #d98a1f; }
-body.page-index .corp-section.corp-soft:has(.corp-about) :is(a,button):focus-visible { outline-color: #f0c88a; }
-body.page-index .corp-about-links :is(a,button):focus-visible { outline-color: var(--brand-navy); }
-body.page-index .corp-about .corp-photo-caption { background: #f3f6f8; color: var(--brand-navy); border-color: #cbd8e2; }
-body.page-index .corp-reasons { padding: 27px; background: var(--brand-navy); }
-body.page-index .corp-reasons h3 { color: #fff; }
+body.page-index .corp-about .corp-link { color: var(--brand-orange-soft); border-color: var(--brand-orange); }
+body.page-index .corp-about .corp-link:hover { color: #ffffff; border-color: var(--brand-orange-soft); }
+body.page-index .corp-section.corp-soft:has(.corp-about) :is(a, button):focus-visible { outline-color: var(--brand-orange-soft); }
+body.page-index .corp-about-links :is(a, button):focus-visible { outline-color: var(--brand-navy); }
+body.page-index .corp-about .corp-photo-caption { background: var(--brand-paper); color: var(--brand-navy); border-color: #cbd8e2; }
+
+body.page-index .corp-reasons { padding: 30px; background: var(--brand-navy); border-radius: 6px; }
+body.page-index .corp-reasons h3 { color: #ffffff; }
 body.page-index .corp-reasons p { color: #d4dfe8; }
-body.page-index .corp-reasons article > svg { color: #f0c88a; }
-/* A white capability strip continues the light hero; gold stays in the details. */
-body.page-index .packaging-highlights > .container { background: var(--brand-white); border-color: #dfe5ea; border-bottom-color: #d8e0e7; }
-body.page-index .packaging-highlights a { border-color: #e0e5ea; color: var(--brand-navy); }
+body.page-index .corp-reasons article > svg { color: var(--brand-orange-soft); }
+
+/* Refined capability strip beneath the hero */
+body.page-index .packaging-highlights > .container {
+  background: var(--brand-white);
+  border-color: var(--line);
+  border-bottom: 2px solid var(--brand-orange);
+}
+body.page-index .packaging-highlights a { border-color: #e4eaf0; color: var(--brand-navy); }
 body.page-index .packaging-highlights strong { color: var(--brand-navy); }
-body.page-index .packaging-highlights a > svg { stroke: #ad7016; }
-body.page-index .packaging-highlights a > span > span { color: #536372; }
-body.page-index .packaging-highlights a:hover strong { color: #9d6112; }
-/* One calm white closing area: assurance first, then a clear gold action. */
-body.page-index .corp-marks.corp-soft, body.page-index .home-enquiry { background: #fff; }
+body.page-index .packaging-highlights a > svg { stroke: var(--brand-orange); }
+body.page-index .packaging-highlights a > span > span { color: var(--muted); }
+body.page-index .packaging-highlights a:hover strong { color: var(--brand-orange); }
+
+/* Calm closing area on homepage */
+body.page-index .corp-marks.corp-soft,
+body.page-index .home-enquiry { background: #ffffff; }
 body.page-index .home-quality-copy { background: transparent; color: var(--brand-navy); }
-body.page-index .home-quality-copy h2, body.page-index .home-enquiry h2 { color: var(--brand-navy); }
-body.page-index .home-quality-copy .eyebrow, body.page-index .home-enquiry-label { color: #536372; }
-body.page-index .home-quality-copy a { color: var(--brand-navy); border-color: #bdc8d2; }
-body.page-index .home-quality-copy a:hover { color: var(--brand-navy); border-color: var(--brand-gold); }
-body.page-index .home-enquiry-description { color: #536372; }
-body.page-index .home-enquiry .button { background: var(--brand-gold); border-color: var(--brand-gold); color: var(--brand-navy); }
-body.page-index .home-enquiry .button:hover { background: #e8a547; border-color: #e8a547; color: var(--brand-navy); }
+body.page-index .home-quality-copy h2,
+body.page-index .home-enquiry h2 { color: var(--brand-navy); }
+body.page-index .home-quality-copy .eyebrow,
+body.page-index .home-enquiry-label { color: var(--muted); }
+body.page-index .home-enquiry-label::before { background: var(--brand-orange); }
+body.page-index .home-quality-copy a { color: var(--brand-navy); border-color: #c5d1dc; }
+body.page-index .home-quality-copy a:hover { color: var(--brand-orange); border-color: var(--brand-orange); }
+body.page-index .home-enquiry-description { color: var(--muted); }
+body.page-index .home-enquiry .button {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #ffffff;
+}
+body.page-index .home-enquiry .button:hover {
+  background: var(--brand-orange-hover);
+  border-color: var(--brand-orange-hover);
+  color: #ffffff;
+}
 
-/* Products: retain the navy structure catalogue and a light material-advice panel. */
+/* Products: navy structure catalogue and crisp off-white material-advice panel */
 body.page-products .profile-range-section:not(.soft) { background: var(--brand-navy); border-color: var(--brand-navy); }
-body.page-products .profile-range-section:not(.soft) .profile-section-heading :is(h2,p) { color: #fff; }
-body.page-products .profile-range-section:not(.soft) .profile-section-heading .eyebrow { color: #f0c88a; }
-body.page-products .profile-range-section:not(.soft) a:focus-visible { outline-color: #f0c88a; }
-body.page-products .profile-range-section.soft { background: #fff; }
-body.page-products .profile-two-column > div:first-child { padding: 25px; background: #f3f6f8; border: 1px solid #e0e7ed; }
-body.page-products .profile-two-column > div:first-child :is(ul,p,li) { color: var(--brand-navy); }
+body.page-products .profile-range-section:not(.soft) .profile-section-heading :is(h2, p) { color: #ffffff; }
+body.page-products .profile-range-section:not(.soft) .profile-section-heading .eyebrow { color: var(--brand-orange-soft); }
+body.page-products .profile-range-section:not(.soft) a:focus-visible { outline-color: var(--brand-orange-soft); }
+body.page-products .profile-range-section.soft { background: #ffffff; }
+body.page-products .profile-two-column > div:first-child { padding: 25px; background: var(--brand-paper); border: 1px solid var(--line); border-radius: 6px; }
+body.page-products .profile-two-column > div:first-child :is(ul, p, li) { color: var(--brand-navy); }
 
-/* Informational ribbons stay light, with consistent navy linework and typography. */
-body .capability-strengths, body .quality-themes { background: #f3f6f8; border-top: 1px solid #e1e7ed; border-bottom: 1px solid #e1e7ed; }
-body :is(.capability-strengths,.quality-themes) :is(h2,h3,a,svg) { color: var(--brand-navy); }
-body :is(.capability-strengths,.quality-themes) p { color: #536372; }
-body :is(.capability-strengths,.quality-themes) a + a { border-color: #d7e1e9; }
+/* Informational ribbons */
+body .capability-strengths,
+body .quality-themes { background: var(--brand-paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+body :is(.capability-strengths, .quality-themes) :is(h2, h3, a) { color: var(--brand-navy); }
+body :is(.capability-strengths, .quality-themes) svg { color: var(--brand-orange); }
+body :is(.capability-strengths, .quality-themes) p { color: var(--muted); }
+body :is(.capability-strengths, .quality-themes) a + a { border-color: #d7e1e9; }
+
 body.page-capabilities .profile-technical > .profile-spec-grid ~ .profile-spec-grid article { background: var(--brand-navy); border-color: var(--brand-navy); }
-body.page-capabilities .profile-technical > .profile-spec-grid ~ .profile-spec-grid article h3 { color: #fff; }
+body.page-capabilities .profile-technical > .profile-spec-grid ~ .profile-spec-grid article h3 { color: #ffffff; }
 body.page-capabilities .profile-technical > .profile-spec-grid ~ .profile-spec-grid article p { color: #d4dfe8; }
-body.page-quality .quality-standards-layout > div:first-child { padding: 22px; border: 1px solid #e0e7ed; background: #f3f6f8; }
-body.page-quality .quality-standards-layout > div:first-child :is(h2,p) { color: var(--brand-navy); }
-body.page-quality .quality-standards-layout > div:first-child .eyebrow { color: #536372; }
-body.page-quality .quality-standards-layout > div:first-child .eyebrow::after { background: var(--brand-gold); }
 
-/* Industries: a navy introduction anchors the otherwise light catalogue. */
-body.page-industries main > .section:not(.cta) > .container > .section-heading { padding: 30px; background: var(--brand-navy); border-left: 3px solid var(--brand-gold); }
-body.page-industries main > .section:not(.cta) > .container > .section-heading :is(h2,p) { color: #fff; }
-body.page-industries main > .section:not(.cta) > .container > .section-heading .eyebrow { color: #f0c88a; }
+body.page-quality .quality-standards-layout > div:first-child { padding: 22px; border: 1px solid var(--line); background: var(--brand-paper); border-radius: 6px; }
+body.page-quality .quality-standards-layout > div:first-child :is(h2, p) { color: var(--brand-navy); }
+body.page-quality .quality-standards-layout > div:first-child .eyebrow { color: var(--muted); }
+body.page-quality .quality-standards-layout > div:first-child .eyebrow::after { background: var(--brand-orange); }
 
-/* Leadership commitments share the light neutral system used by the owner portrait. */
-body.page-about .corp-leadership-focus { padding: 23px; background: #f3f6f8; border: 1px solid #dfe7ed; border-left: 3px solid #bdcedb; }
-body.page-about .corp-leadership-focus :is(h3,li,p) { color: var(--brand-navy); }
+/* Industries: crisp navy introduction header */
+body.page-industries main > .section:not(.cta) > .container > .section-heading {
+  padding: 28px 30px;
+  background: var(--brand-navy);
+  border-left: 3px solid var(--brand-orange);
+  border-radius: 6px;
+}
+body.page-industries main > .section:not(.cta) > .container > .section-heading :is(h2, p) { color: #ffffff; }
+body.page-industries main > .section:not(.cta) > .container > .section-heading .eyebrow { color: var(--brand-orange-soft); }
+
+/* About: leadership and production approach */
+body.page-about .corp-leadership-focus { padding: 23px; background: var(--brand-paper); border: 1px solid var(--line); border-left: 3px solid var(--brand-orange); border-radius: 6px; }
+body.page-about .corp-leadership-focus :is(h3, li, p) { color: var(--brand-navy); }
 body.page-about .corp-leadership-focus h3 { margin-bottom: 13px; font-size: 12px; line-height: 1.6; }
 body.page-about .corp-leadership-focus ul { gap: 8px; }
-body.page-about .corp-leadership-focus li { padding: 6px 9px; border: 1px solid #dce5ec; border-radius: 3px; background: #fff; font-size: 11px; line-height: 1.55; }
-/* Keep the real production photograph visible under a readable navy overlay. */
+body.page-about .corp-leadership-focus li { padding: 6px 9px; border: 1px solid #dce5ec; border-radius: 4px; background: #ffffff; font-size: 11px; line-height: 1.55; }
+
 body.page-about .about-approach { background: var(--brand-navy); }
-body.page-about .about-approach::after { background: linear-gradient(90deg,#0b263df7 0%,#0d293fec 37%,#0f2a43c9 58%,#0f2a4338 100%); }
-body.page-about .about-approach h2 { color: #fff; }
+body.page-about .about-approach::after { background: linear-gradient(90deg, #0b263df7 0%, #0d293fec 37%, #0f2a43c9 58%, #0f2a4338 100%); }
+body.page-about .about-approach h2 { color: #ffffff; }
 body.page-about .about-approach p { color: #e2ebf2; }
-body.page-about .about-approach .eyebrow { color: #efbf7c; }
-body.page-about .about-approach .eyebrow::after { background: var(--brand-gold); }
-body.page-about .about-approach a { display: inline-flex; align-items: center; min-height: 44px; color: #fff; border-color: #efbf7c88; }
-body.page-about .about-approach a:hover { color: #fff; border-color: #efbf7c; }
-body.page-about .about-approach a:focus-visible { outline-color: #f0c88a; }
+body.page-about .about-approach .eyebrow { color: var(--brand-orange-soft); }
+body.page-about .about-approach .eyebrow::after { background: var(--brand-orange); }
+body.page-about .about-approach a { display: inline-flex; align-items: center; min-height: 40px; color: #ffffff; border-color: rgba(245, 154, 105, 0.55); }
+body.page-about .about-approach a:hover { color: #ffffff; border-color: var(--brand-orange-soft); }
+body.page-about .about-approach a:focus-visible { outline-color: var(--brand-orange-soft); }
 body.page-about .about-approach a > span { color: inherit; }
 
-/* A neutral briefing guide supports the white enquiry form without competing with it. */
-body.page-quotation .quote-grid > aside { padding: 25px; background: #f3f6f8; border: 1px solid #dfe7ed; border-top: 2px solid #c3d3df; }
-body.page-quotation .quote-grid > aside :is(h2,h3,p,li,a,.eyebrow) { color: var(--brand-navy); }
-body.page-quotation .quote-grid > aside .note { background: #fff; border-color: #dbe4eb; }
-body.page-quotation .quote-grid > aside .eyebrow::after { background: var(--brand-gold); }
+/* Quotation guide */
+body.page-quotation .quote-grid > aside { padding: 25px; background: var(--brand-paper); border: 1px solid var(--line); border-top: 2px solid var(--brand-orange); border-radius: 6px; }
+body.page-quotation .quote-grid > aside :is(h2, h3, p, li, a, .eyebrow) { color: var(--brand-navy); }
+body.page-quotation .quote-grid > aside .note { background: #ffffff; border-color: #dbe4eb; }
+body.page-quotation .quote-grid > aside .eyebrow::after { background: var(--brand-orange); }
 
-/* Contact: a light photographic hero balances the navy information panel. */
+/* Contact */
 body.page-contact .contact-hero .capabilities-hero-angle,
-body.page-contact .contact-hero .capabilities-hero-angle::before { background: linear-gradient(90deg,#fff 0%,#fff 35%,#fffffff5 46%,#ffffff88 60%,#ffffff00 78%); }
-body.page-contact .contact-hero :is(h1,p,.eyebrow,.capabilities-breadcrumb,.capabilities-breadcrumb a) { color: var(--brand-navy); }
-body.page-contact .contact-hero h1 > span { color: #9c620f; }
-body.page-contact .contact-information { padding: 25px; background: var(--brand-navy); border-left: 3px solid var(--brand-gold); }
-body.page-contact .contact-information :is(h2,h3,a) { color: #fff; }
-body.page-contact .contact-information :is(p,.contact-secondary) { color: #d4dfe8; }
-body.page-contact .contact-information .contact-info-row > svg { color: #f0c88a; }
+body.page-contact .contact-hero .capabilities-hero-angle::before { background: linear-gradient(90deg, #fff 0%, #fff 35%, #fffffff5 46%, #ffffff88 60%, #ffffff00 78%); }
+body.page-contact .contact-hero :is(h1, p, .eyebrow, .capabilities-breadcrumb, .capabilities-breadcrumb a) { color: var(--brand-navy); }
+body.page-contact .contact-hero h1 > span { color: var(--brand-orange); }
+body.page-contact .contact-information { padding: 25px; background: var(--brand-navy); border-left: 3px solid var(--brand-orange); border-radius: 6px; }
+body.page-contact .contact-information :is(h2, h3, a) { color: #ffffff; }
+body.page-contact .contact-information :is(p, .contact-secondary) { color: #d4dfe8; }
+body.page-contact .contact-information .contact-info-row > svg { color: var(--brand-orange-soft); }
 body.page-contact .contact-information .contact-info-row > div { border-color: #ffffff30; }
-body.page-contact .contact-information :is(a,button):focus-visible { outline-color: #f0c88a; }
+body.page-contact .contact-information :is(a, button):focus-visible { outline-color: var(--brand-orange-soft); }
 
 @media (min-width: 1001px) {
-  body.page-products .profile-tag-grid > a { background: #173a54; border-color: #ffffff40; color: #fff; }
-  body.page-products .profile-tag-grid > a > span { color: #f0c88a; }
-  body.page-products .profile-tag-grid > a:hover { background: #244861; border-color: #d98a1f; }
-  body.page-industries .sector-grid article h3 { padding: 11px 14px; background: var(--brand-navy); color: #fff; }
-  body.page-contact .contact-message-panel { background: linear-gradient(to bottom,#0f2a43 0 124px,#fff 124px); }
-  body.page-contact .contact-message-panel > h2 { color: #fff; }
+  body.page-products .profile-tag-grid > a { background: #173a54; border-color: #ffffff35; color: #ffffff; border-radius: 4px; }
+  body.page-products .profile-tag-grid > a > span { color: var(--brand-orange-soft); }
+  body.page-products .profile-tag-grid > a:hover { background: #214a69; border-color: var(--brand-orange); }
+  body.page-industries .sector-grid article h3 { padding: 11px 14px; background: var(--brand-navy); color: #ffffff; border-radius: 4px 4px 0 0; }
+  body.page-contact .contact-message-panel { background: linear-gradient(to bottom, #0f2a43 0 124px, #ffffff 124px); }
+  body.page-contact .contact-message-panel > h2 { color: #ffffff; }
   body.page-contact .contact-message-panel > p { color: #d4dfe8; }
 }
 
 @media (max-width: 1100px) {
-  body.page-about .about-approach::after { background: linear-gradient(90deg,#0b263df2,#0f2a43d6); }
+  body.page-about .about-approach::after { background: linear-gradient(90deg, #0b263df2, #0f2a43d6); }
   body.page-contact .contact-hero .capabilities-hero-angle,
-  body.page-contact .contact-hero .capabilities-hero-angle::before { background: linear-gradient(90deg,#fffffffa,#fffffff0); }
+  body.page-contact .contact-hero .capabilities-hero-angle::before { background: linear-gradient(90deg, #fffffffa, #fffffff0); }
 }
 @media (max-width: 600px) {
-  body.page-index .corp-reasons { padding: 22px 20px; }
-  body.page-about .corp-leadership-focus { padding: 20px; }
+  body.page-index .corp-reasons { padding: 20px 18px; }
+  body.page-about .corp-leadership-focus { padding: 18px; }
   body.page-products .profile-two-column > div:first-child,
   body.page-quality .quality-standards-layout > div:first-child,
   body.page-quotation .quote-grid > aside,
-  body.page-contact .contact-information { padding: 20px; }
-  body.page-industries main > .section:not(.cta) > .container > .section-heading { padding: 23px 20px; }
+  body.page-contact .contact-information { padding: 18px; }
+  body.page-industries main > .section:not(.cta) > .container > .section-heading { padding: 20px 18px; }
   body.page-quality .quality-standards-layout > div:first-child h2 { padding: 0; background: transparent; }
-  body.page-quotation .quote-grid > aside .note { padding: 18px; background: #fff; border-color: #dbe4eb; }
-  body.page-quotation .quote-grid > aside .quote-steps { padding: 16px 16px 16px 36px; background: #fff; }
+  body.page-quotation .quote-grid > aside .note { padding: 16px; background: #ffffff; border-color: #dbe4eb; }
+  body.page-quotation .quote-grid > aside .quote-steps { padding: 14px 14px 14px 32px; background: #ffffff; }
 }

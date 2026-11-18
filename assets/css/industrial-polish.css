@@ -1,0 +1,427 @@
+/* ==========================================================================
+   TECHNO INDUSTRIES — PREMIUM B2B INDUSTRIAL UI/UX REFINEMENT LAYER
+   Refined navy (#0f2a43), crisp off-white (#f6f8fa / #ffffff), and restrained
+   industrial orange (#e05a17). Removes excessive gold and decorative blue
+   shapes while elevating hero presentation, card hierarchy, and cross-page CTAs.
+   ========================================================================== */
+
+:root {
+  --ind-navy: #0f2a43;
+  --ind-navy-mid: #1a3b59;
+  --ind-orange: #e05a17;
+  --ind-orange-hover: #c94c0f;
+  --ind-orange-soft: rgba(224, 90, 23, 0.09);
+  --ind-paper: #f6f8fa;
+  --ind-surface: #ffffff;
+  --ind-border: #dde4eb;
+  --ind-border-strong: #c8d4e0;
+  --ind-ink: #17212b;
+  --ind-muted: #526475;
+}
+
+/* ==========================================================================
+   1. HOMEPAGE HERO — CLEAN ARCHITECTURAL STUDIO STAGE (NO BLUE BLOB CLUTTER)
+   ========================================================================== */
+
+body.page-index .packaging-banner {
+  background: linear-gradient(180deg, #f8fafc 0%, #f2f5f8 100%) !important;
+  border-top: 1px solid #e6ecf1 !important;
+  border-bottom: 1px solid #e2e8ef !important;
+}
+
+body.page-index .packaging-banner .banner-layout {
+  position: relative !important;
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  align-items: center;
+  gap: 52px;
+  min-height: clamp(460px, calc(100svh - 210px), 610px);
+  padding-top: 34px;
+  padding-bottom: 54px;
+}
+
+body.page-index .packaging-banner .banner-eyebrow {
+  color: var(--ind-navy);
+  letter-spacing: 0.12em;
+  margin-bottom: 18px;
+}
+
+body.page-index .packaging-banner .banner-eyebrow > span {
+  background: var(--ind-orange) !important;
+  height: 2px;
+}
+
+body.page-index .packaging-banner h1 {
+  color: var(--ind-navy);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  margin-bottom: 20px;
+}
+
+body.page-index .packaging-banner h1 > span {
+  color: #2b3f52;
+  font-weight: 600;
+}
+
+body.page-index .packaging-banner .banner-description {
+  color: var(--ind-muted);
+  font-size: 15px;
+  line-height: 1.78;
+  max-width: 470px;
+  margin-bottom: 26px;
+}
+
+body.page-index .packaging-banner .banner-button {
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  min-height: 46px;
+  padding: 12px 22px;
+  gap: 14px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.page-index .packaging-banner .banner-button-primary {
+  background: var(--ind-orange) !important;
+  border-color: var(--ind-orange) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(224, 90, 23, 0.22);
+}
+
+body.page-index .packaging-banner .banner-button-primary:hover {
+  background: var(--ind-orange-hover) !important;
+  border-color: var(--ind-orange-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(224, 90, 23, 0.3);
+}
+
+body.page-index .packaging-banner .banner-button-secondary {
+  background: #ffffff !important;
+  border-color: #c5d1dc !important;
+  color: var(--ind-navy) !important;
+}
+
+body.page-index .packaging-banner .banner-button-secondary:hover {
+  border-color: var(--ind-navy) !important;
+  background: #f8fafc !important;
+  transform: translateY(-1px);
+}
+
+body.page-index .packaging-banner .banner-assurance {
+  color: var(--ind-muted);
+  font-size: 12px;
+  margin-top: 22px;
+}
+
+body.page-index .packaging-banner .banner-assurance svg {
+  stroke: var(--ind-orange) !important;
+}
+
+/* Remove decorative blue backdrop image; use clean architectural studio stage */
+body.page-index .packaging-banner .banner-studio {
+  display: none !important;
+}
+
+body.page-index .packaging-banner .banner-showcase {
+  position: relative !important;
+  align-self: center !important;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  border: 1px solid #e1e7ee;
+  background:
+    radial-gradient(ellipse 68% 58% at 50% 46%, rgba(255, 255, 255, 0.96) 0%, rgba(244, 247, 250, 0.72) 58%, rgba(232, 238, 244, 0.55) 100%),
+    linear-gradient(90deg, rgba(15, 42, 67, 0.03) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(15, 42, 67, 0.03) 1px, transparent 1px),
+    #f3f6f9;
+  background-size: 100% 100%, 28px 28px, 28px 28px, 100% 100%;
+  box-shadow: 0 18px 44px rgba(15, 42, 67, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Subtle studio ground contact shadow beneath the sharp cardboard compositions */
+body.page-index .packaging-banner .banner-showcase::after {
+  content: '';
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 9%;
+  height: 15%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(15, 42, 67, 0.16) 0%, rgba(15, 42, 67, 0.06) 48%, transparent 74%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+body.page-index .packaging-banner .banner-product-stage {
+  position: relative !important;
+  inset: auto !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 6% 5% 8%;
+  z-index: 2;
+}
+
+body.page-index .packaging-banner .banner-product {
+  position: absolute;
+  inset: 5% 5% 7% 5%;
+  width: 90%;
+  height: 88%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0;
+  transform: translate3d(0, 4px, 0) scale(0.982);
+  transform-origin: 50% 82%;
+  transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1), transform 5.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+  filter: drop-shadow(0 12px 18px rgba(15, 42, 67, 0.1));
+}
+
+body.page-index .packaging-banner .banner-product.is-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1.012);
+}
+
+/* ==========================================================================
+   2. REFINED CAPABILITIES STRIP & COHESIVE SECTION TRANSITION
+   ========================================================================== */
+
+body.page-index .packaging-highlights {
+  background: linear-gradient(180deg, #f2f5f8 0%, #f2f5f8 46%, #ffffff 46%, #ffffff 100%) !important;
+  padding-bottom: 24px !important;
+  border: 0 !important;
+}
+
+body.page-index .packaging-highlights > .container {
+  margin-top: -26px;
+  padding: 20px 26px;
+  background: #ffffff;
+  border: 1px solid var(--ind-border);
+  border-bottom: 2px solid var(--ind-orange);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(15, 42, 67, 0.06);
+}
+
+body.page-index .packaging-highlights a {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+body.page-index .packaging-highlights a:hover {
+  transform: translateY(-1px);
+}
+
+body.page-index .packaging-highlights a > svg {
+  stroke: var(--ind-orange) !important;
+}
+
+body.page-index .corp-section.corp-sectors {
+  padding-top: 44px;
+  background: #ffffff;
+}
+
+/* ==========================================================================
+   3. RESTRAINED INDUSTRIAL ACCENTS & CARD HIERARCHY ACROSS ALL PAGES
+   ========================================================================== */
+
+body .eyebrow::after,
+body .corp-heading .eyebrow::after,
+body .section-heading .eyebrow::after,
+body .profile-section-heading .eyebrow::after {
+  background: var(--ind-orange) !important;
+}
+
+body .corp-sector-list a {
+  border: 1px solid var(--ind-border);
+  border-radius: 8px;
+  background: #ffffff;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body .corp-sector-list a:hover {
+  border-color: var(--ind-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 42, 67, 0.07);
+}
+
+body .corp-sector-list a svg,
+body .corp-about-links article svg {
+  color: var(--ind-orange);
+}
+
+body .corp-solutions article,
+body.page-products .catalogue-card,
+body.page-industries .sector-grid article,
+body.page-capabilities .capability-card {
+  border: 1px solid var(--ind-border);
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+body .corp-solutions article:hover,
+body.page-products .catalogue-card:hover,
+body.page-industries .sector-grid article:hover,
+body.page-capabilities .capability-card:hover {
+  border-color: var(--ind-border-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(15, 42, 67, 0.08);
+}
+
+body .corp-solution-photo img,
+body.page-products .catalogue-card-image img,
+body.page-capabilities .capability-card-photo img {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body .corp-solutions article:hover .corp-solution-photo img,
+body.page-products .catalogue-card:hover .catalogue-card-image img,
+body.page-capabilities .capability-card:hover .capability-card-photo img {
+  transform: scale(1.035);
+}
+
+body .corp-process li > span {
+  color: var(--ind-orange) !important;
+}
+
+body .corp-link {
+  color: var(--ind-navy);
+  border-bottom-color: var(--ind-orange);
+}
+
+body .corp-link:hover {
+  color: var(--ind-orange);
+}
+
+/* Products filter tabs */
+body.page-products .catalogue-tabs button[aria-pressed='true'],
+body.page-products .catalogue-tabs button.active,
+body .filters button.active {
+  background: var(--ind-navy) !important;
+  border-color: var(--ind-navy) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   4. CROSS-PAGE B2B CONVERSION BRIDGE (.page-next-cta)
+   ========================================================================== */
+
+body .page-next-cta {
+  padding: 52px 0;
+  background: var(--ind-paper);
+  border-top: 1px solid var(--ind-border);
+}
+
+body .page-next-cta-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: center;
+  padding: 32px 36px;
+  background: #ffffff;
+  border: 1px solid var(--ind-border);
+  border-left: 3px solid var(--ind-orange);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(15, 42, 67, 0.04);
+}
+
+body .page-next-cta .eyebrow {
+  margin: 0 0 8px;
+  color: var(--ind-muted);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body .page-next-cta h2 {
+  margin: 0 0 8px;
+  color: var(--ind-navy);
+  font-size: clamp(22px, 2.3vw, 28px);
+  line-height: 1.25;
+}
+
+body .page-next-cta p:not(.eyebrow) {
+  margin: 0;
+  max-width: 620px;
+  color: var(--ind-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+body .page-next-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+body .page-next-cta .button {
+  min-height: 44px;
+  padding: 11px 20px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  body .page-next-cta-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.page-index .packaging-banner .banner-showcase {
+    border-radius: 10px;
+  }
+
+  body.page-index .packaging-banner .banner-product-stage {
+    padding: 4% 4% 6% !important;
+  }
+
+  body.page-index .packaging-highlights {
+    background: #f6f8fa !important;
+  }
+
+  body .page-next-cta {
+    padding: 30px 0 !important;
+  }
+
+  body .page-next-cta-inner {
+    padding: 18px 16px !important;
+    gap: 14px !important;
+  }
+
+  body .page-next-cta-actions {
+    gap: 8px !important;
+  }
+}
+
+/* ==========================================================================
+   5. RESPECT PREFERS-REDUCED-MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-index .packaging-banner .banner-product,
+  body.page-index .packaging-banner .banner-button,
+  body.page-index .packaging-highlights a,
+  body .corp-sector-list a,
+  body .corp-solutions article,
+  body .corp-solution-photo img,
+  body.page-products .catalogue-card,
+  body.page-products .catalogue-card-image img,
+  body.page-industries .sector-grid article,
+  body.page-capabilities .capability-card,
+  body.page-capabilities .capability-card-photo img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
