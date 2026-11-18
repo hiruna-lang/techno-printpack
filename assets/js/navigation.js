@@ -81,19 +81,32 @@
 
   // Dropdowns interaction
   dropdowns.forEach(dropdown => {
+    const heading = dropdown.querySelector('.nav-dropdown-heading');
+    const headingLink = dropdown.querySelector('.nav-dropdown-heading > a.nav-link');
     const toggle = dropdown.querySelector('.dropdown-toggle');
     const items = [...dropdown.querySelectorAll('.dropdown-item')];
 
+    const toggleDropdown = event => {
+      event.preventDefault();
+      event.stopPropagation();
+      clearHover();
+      const isOpen = dropdown.classList.contains('is-open');
+      if (isOpen) {
+        setDropdown(dropdown, false);
+      } else {
+        openDropdown(dropdown);
+      }
+    };
+
+    if (headingLink) {
+      headingLink.addEventListener('click', toggleDropdown);
+    }
     if (toggle) {
-      toggle.addEventListener('click', event => {
-        event.stopPropagation();
-        clearHover();
-        const isOpen = dropdown.classList.contains('is-open');
-        if (isOpen) {
-          setDropdown(dropdown, false);
-        } else {
-          openDropdown(dropdown);
-        }
+      toggle.addEventListener('click', toggleDropdown);
+    }
+    if (heading) {
+      heading.addEventListener('click', event => {
+        if (event.target === heading) toggleDropdown(event);
       });
     }
 
@@ -165,6 +178,7 @@
   // Close menus on page navigation
   if (navigation) {
     navigation.addEventListener('click', event => {
+      if (event.target.closest('.nav-dropdown-heading')) return;
       if (event.target.closest('a')) {
         setMobileMenu(false);
         closeAllDropdowns();

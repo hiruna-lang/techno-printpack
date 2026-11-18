@@ -409,8 +409,8 @@ html body .header :is(a, button):focus-visible {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     padding: 0;
     margin: 0;
     border: 1px solid #e2e8f0;
@@ -423,8 +423,8 @@ html body .header :is(a, button):focus-visible {
   html body .header .menu-icon {
     position: relative;
     display: block;
-    width: 18px;
-    height: 14px;
+    width: 16px;
+    height: 12px;
   }
 
   html body .header .menu-icon span {
@@ -438,38 +438,38 @@ html body .header :is(a, button):focus-visible {
   }
 
   html body .header .menu-icon span:nth-child(1) { top: 0; }
-  html body .header .menu-icon span:nth-child(2) { top: 6px; }
-  html body .header .menu-icon span:nth-child(3) { top: 12px; }
+  html body .header .menu-icon span:nth-child(2) { top: 5px; }
+  html body .header .menu-icon span:nth-child(3) { top: 10px; }
 
   html body .header .menu-toggle[aria-expanded='true'] .menu-icon span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(5px) rotate(45deg);
   }
   html body .header .menu-toggle[aria-expanded='true'] .menu-icon span:nth-child(2) {
     opacity: 0;
   }
   html body .header .menu-toggle[aria-expanded='true'] .menu-icon span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-5px) rotate(-45deg);
   }
 
   /* Mobile Navigation Drawer */
   html body .header #navigation {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 8px);
     left: 0;
     right: 0;
     width: 100%;
-    max-height: calc(100vh - 84px);
-    max-height: calc(100dvh - 84px);
+    max-height: calc(100vh - 76px);
+    max-height: calc(100dvh - 76px);
     overflow-y: auto;
     overscroll-behavior: contain;
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;
-    padding: 16px;
+    gap: 2px;
+    padding: 12px;
     background: #ffffff !important;
     border: 1px solid #e2e8f0 !important;
-    border-radius: 20px !important;
-    box-shadow: 0 20px 45px rgba(15, 42, 67, 0.16) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 18px 40px rgba(15, 42, 67, 0.16) !important;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -487,10 +487,10 @@ html body .header :is(a, button):focus-visible {
 
   html body .header #navigation > a:not(.button),
   html body .header #navigation .nav-dropdown-heading > a {
-    height: 44px;
-    padding: 0 16px;
-    font-size: 14px;
-    border-radius: 10px;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: 8px;
     width: 100%;
     justify-content: space-between;
   }
@@ -503,12 +503,24 @@ html body .header :is(a, button):focus-visible {
   html body .header #navigation .nav-dropdown-heading {
     width: 100%;
     justify-content: space-between;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  html body .header #navigation .nav-dropdown-heading:has(> a[aria-current='page']) {
+    background: var(--nav-active-pill) !important;
+  }
+
+  html body .header #navigation .nav-dropdown-heading > a {
+    flex: 1 1 auto;
+    background: transparent !important;
   }
 
   html body .header #navigation .dropdown-toggle {
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     padding: 0;
+    flex: 0 0 38px;
   }
 
   /* Dropdown inside mobile drawer */
@@ -517,9 +529,9 @@ html body .header :is(a, button):focus-visible {
     transform: none;
     min-width: 0;
     width: 100%;
-    margin: 4px 0 8px;
+    margin: 2px 0 6px;
     padding: 4px;
-    border-radius: 10px;
+    border-radius: 8px;
     background: #f8fafc !important;
     border-color: #edf2f7 !important;
     box-shadow: none !important;
@@ -535,27 +547,34 @@ html body .header :is(a, button):focus-visible {
   }
 
   html body .header #navigation .dropdown-item {
-    padding: 10px 14px;
-    font-size: 13px;
+    padding: 8px 12px;
+    font-size: 12px;
   }
 
   html body .header #navigation .mobile-quote {
     display: flex;
-    margin-top: 10px;
-    height: 44px;
+    margin-top: 8px;
+    min-height: 38px;
+    height: 38px;
+    font-size: 12.5px;
   }
 
   html body .header .header-actions .button.nav-quote {
-    padding: 8px 14px;
-    font-size: 11.5px;
-    min-height: 36px;
+    padding: 7px 13px;
+    font-size: 11px;
+    min-height: 34px;
   }
 }
 
 @media (max-width: 600px) {
+  html body .header {
+    top: 6px;
+    margin: 6px 0;
+  }
+
   html body .header .brand.profile-logo img {
-    height: 20px;
-    max-width: 155px;
+    height: 18px;
+    max-width: 145px;
   }
 
   html body .header .header-actions .button.nav-quote {
@@ -563,7 +582,15 @@ html body .header :is(a, button):focus-visible {
   }
 
   html body .header .header-inner {
-    height: 50px;
+    width: calc(100% - 20px);
+    height: 46px;
+    padding: 4px 6px 4px 12px;
+    gap: 10px;
+  }
+
+  html body .header .menu-toggle {
+    width: 34px;
+    height: 34px;
   }
 }
 

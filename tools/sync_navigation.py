@@ -1,10 +1,11 @@
-"""Update shared headers, footers and navigation stylesheet order across all pages including industry destinations."""
+"""Update shared headers, footers and responsive/navigation asset links across all 10 pages."""
 from pathlib import Path
 import re, sys
 from navigation_markup import render_header, render_footer
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ['index', 'about', 'products', 'capabilities', 'industries', 'quality', 'quotation', 'contact']
+ASSET_VERSION = '5'
 check = '--check' in sys.argv
 
 # 1. Main company pages
@@ -15,81 +16,65 @@ for name in PAGES:
     assert count == 1, name
     after, f_count = re.subn(r'<footer class="site-footer".*?</footer>', lambda _: render_footer(), after, count=1, flags=re.S)
     assert f_count == 1, f"Footer missing in {name}"
-    css = '<link rel="stylesheet" href="assets/css/navigation.css">'
-    assert after.count(css) == 1, name
-    after = after.replace(css, '').replace('<link rel="stylesheet" href="assets/css/brand-theme.css">', '<link rel="stylesheet" href="assets/css/brand-theme.css">' + css, 1)
-    script = '<script defer src="assets/js/navigation.js"></script>'
-    after = after.replace(script, '')
+
+    # Cache-bust footer.css
+    footer_css = f'<link rel="stylesheet" href="assets/css/footer.css?v={ASSET_VERSION}">'
+    after = re.sub(r'<link rel="stylesheet" href="assets/css/footer\.css(?:\?v=[^"]*)?">', footer_css, after)
+
+    # Cache-bust and order navigation.css
+    nav_css = f'<link rel="stylesheet" href="assets/css/navigation.css?v={ASSET_VERSION}">'
+    after = re.sub(r'<link rel="stylesheet" href="assets/css/navigation\.css(?:\?v=[^"]*)?">', '', after)
+    after = after.replace('<link rel="stylesheet" href="assets/css/brand-theme.css">', '<link rel="stylesheet" href="assets/css/brand-theme.css">' + nav_css, 1)
+
+    # Cache-bust and place mobile-responsive.css last in <head>
+    mobile_css = f'<link rel="stylesheet" href="assets/css/mobile-responsive.css?v={ASSET_VERSION}">'
+    after = re.sub(r'<link rel="stylesheet" href="assets/css/mobile-responsive\.css(?:\?v=[^"]*)?">', '', after)
+    after = after.replace('</head>', mobile_css + '</head>', 1)
+
+    # Cache-bust navigation.js
+    script = f'<script defer src="assets/js/navigation.js?v={ASSET_VERSION}"></script>'
+    after = re.sub(r'<script defer src="assets/js/navigation\.js(?:\?v=[^"]*)?"></script>', '', after)
     first_library = '<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>'
     assert first_library in after, name
     after = after.replace(first_library, script + first_library, 1)
+
     if check:
         assert after == before, f'Navigation or footer out of sync: {name}'
     elif after != before:
         path.write_text(after, encoding='utf-8')
 
-# 2. Industry Destination: Grand Techno
-grand_path = ROOT / 'grand-techno' / 'index.html'
-if grand_path.exists():
-    grand_before = grand_path.read_text(encoding='utf-8')
-    grand_header = render_header('grand-techno', base_path='../')
-    grand_after, count = re.subn(r'<header class="header">.*?</header>', lambda _: grand_header, grand_before, count=1, flags=re.S)
-    if count == 1:
-        # Remove legacy farm-navigation assets
-        grand_after = re.sub(r'<link rel="stylesheet" href="[^"]*farm-navigation\.css[^"]*">\s*', '', grand_after)
-        grand_after = re.sub(r'<script defer src="[^"]*farm-navigation\.js[^"]*"></script>\s*', '', grand_after)
-        
-        # Replace footer with unified corporate site-footer
-        grand_footer = render_footer(base_path='../')
-        grand_after, f_count = re.subn(r'<footer.*?</footer\s*>', lambda _: grand_footer, grand_after, count=1, flags=re.S)
-        assert f_count == 1, 'Grand Techno footer replacement failed'
-        
-        # Ensure footer.css is in head
-        footer_css = '<link rel="stylesheet" href="../assets/css/footer.css">'
-        if footer_css not in grand_after:
-            grand_after = grand_after.replace('</head>', footer_css + '</head>', 1)
+# 2. Industry Destinations (Grand Techno & Green Techno Farm)
+for page_key, rel_dir in [('grand-techno', 'grand-techno'), ('farm', 'farm')]:
+    dest_path = ROOT / rel_dir / 'index.html'
+    if not dest_path.exists():
+        continue
+    before = dest_path.read_text(encoding='utf-8')
+    header_html = render_header(page_key, base_path='../')
+    after, count = re.subn(r'<header class="header">.*?</header>', lambda _: header_html, before, count=1, flags=re.S)
+    assert count == 1, page_key
 
-        css = '<link rel="stylesheet" href="../assets/css/navigation.css">'
-        if css in grand_after:
-            grand_after = grand_after.replace(css, '')
-        grand_after = grand_after.replace('</head>', css + '</head>', 1)
-        script = '<script defer src="../assets/js/navigation.js"></script>'
-        if script in grand_after:
-            grand_after = grand_after.replace(script, '')
-        grand_after = grand_after.replace('</body>', script + '</body>', 1)
-        if not check and grand_after != grand_before:
-            grand_path.write_text(grand_after, encoding='utf-8')
+    # Remove legacy farm-navigation assets
+    after = re.sub(r'<link rel="stylesheet" href="[^"]*farm-navigation\.css[^"]*">\s*', '', after)
+    after = re.sub(r'<script defer src="[^"]*farm-navigation\.js[^"]*"></script>\s*', '', after)
 
-# 3. Industry Destination: Green Techno Farm
-farm_path = ROOT / 'farm' / 'index.html'
-if farm_path.exists():
-    farm_before = farm_path.read_text(encoding='utf-8')
-    farm_header = render_header('farm', base_path='../')
-    farm_after, count = re.subn(r'<header class="header">.*?</header>', lambda _: farm_header, farm_before, count=1, flags=re.S)
-    if count == 1:
-        # Remove legacy farm-navigation assets
-        farm_after = re.sub(r'<link rel="stylesheet" href="[^"]*farm-navigation\.css[^"]*">\s*', '', farm_after)
-        farm_after = re.sub(r'<script defer src="[^"]*farm-navigation\.js[^"]*"></script>\s*', '', farm_after)
+    # Replace footer with unified corporate site-footer
+    footer_html = render_footer(base_path='../')
+    after, f_count = re.subn(r'<footer.*?</footer\s*>', lambda _: footer_html, after, count=1, flags=re.S)
+    assert f_count == 1, f'{page_key} footer replacement failed'
 
-        # Replace footer with unified corporate site-footer
-        farm_footer = render_footer(base_path='../')
-        farm_after, f_count = re.subn(r'<footer.*?</footer\s*>', lambda _: farm_footer, farm_after, count=1, flags=re.S)
-        assert f_count == 1, 'Farm footer replacement failed'
+    # Strip old links and insert versioned footer.css, navigation.css, mobile-responsive.css in order
+    for css_name in ['footer.css', 'navigation.css', 'mobile-responsive.css']:
+        after = re.sub(rf'<link rel="stylesheet" href="\.\./assets/css/{re.escape(css_name)}(?:\?v=[^"]*)?">', '', after)
+        tag = f'<link rel="stylesheet" href="../assets/css/{css_name}?v={ASSET_VERSION}">'
+        after = after.replace('</head>', tag + '</head>', 1)
 
-        # Ensure footer.css is in head
-        footer_css = '<link rel="stylesheet" href="../assets/css/footer.css">'
-        if footer_css not in farm_after:
-            farm_after = farm_after.replace('</head>', footer_css + '</head>', 1)
+    script = f'<script defer src="../assets/js/navigation.js?v={ASSET_VERSION}"></script>'
+    after = re.sub(r'<script defer src="\.\./assets/js/navigation\.js(?:\?v=[^"]*)?"></script>', '', after)
+    after = after.replace('</body>', script + '</body>', 1)
 
-        css = '<link rel="stylesheet" href="../assets/css/navigation.css">'
-        if css in farm_after:
-            farm_after = farm_after.replace(css, '')
-        farm_after = farm_after.replace('</head>', css + '</head>', 1)
-        script = '<script defer src="../assets/js/navigation.js"></script>'
-        if script in farm_after:
-            farm_after = farm_after.replace(script, '')
-        farm_after = farm_after.replace('</body>', script + '</body>', 1)
-        if not check and farm_after != farm_before:
-            farm_path.write_text(farm_after, encoding='utf-8')
+    if check:
+        assert after == before, f'Navigation or footer out of sync: {page_key}'
+    elif after != before:
+        dest_path.write_text(after, encoding='utf-8')
 
-print(('Checked' if check else 'Synced') + ' shared navigation and footer across all pages including industry destinations.')
+print(('Checked' if check else 'Synced') + ' shared navigation, footer, and responsive assets across all 10 pages.')

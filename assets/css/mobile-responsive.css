@@ -1,0 +1,850 @@
+/* ==========================================================================
+   PROJECT-WIDE MOBILE & CROSS-DEVICE RESPONSIVE REFINEMENT
+   Ensures compact, well-proportioned typography, buttons, images, and zero
+   horizontal overflow across phones, tablets, and mobile in-app browsers.
+   Applies across all 10 pages (8 Techno Industries pages + Grand Techno + Farm).
+   ========================================================================== */
+
+/* Global cross-device safety */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+main img,
+main picture,
+main video,
+main iframe {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   TABLET & MEDIUM VIEWPORTS (<= 1024px)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  body .container {
+    width: min(100% - 36px, 980px);
+  }
+
+  body .corp-section,
+  body .section,
+  body .profile-range-section {
+    padding-block: 44px;
+  }
+
+  body .internal-hero,
+  body .about-hero,
+  body .catalogue-hero,
+  body .capabilities-hero {
+    min-height: 220px;
+    padding-block: 32px;
+  }
+
+  body .internal-hero h1,
+  body .about-hero h1,
+  body .catalogue-hero h1,
+  body .capabilities-hero h1 {
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.18;
+  }
+}
+
+/* ==========================================================================
+   MOBILE VIEWPORTS & IN-APP BROWSERS (<= 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 13px;
+    line-height: 1.62;
+  }
+
+  body .container {
+    width: calc(100% - 28px);
+  }
+
+  /* Compact Utility Bar */
+  body .utility-bar {
+    height: 26px !important;
+    font-size: 9.5px !important;
+  }
+
+  body .utility-bar .container > span {
+    display: none !important;
+  }
+
+  body .utility-bar .container > div {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  body .utility-bar svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* Compact Section Spacing */
+  body .corp-section,
+  body .section,
+  body .about-company,
+  body .about-approach,
+  body .catalogue-body,
+  body .capability-body,
+  body .profile-range-section,
+  body .quality-assurance,
+  body .quality-standards,
+  body .profile-marks-section {
+    padding-block: 30px !important;
+  }
+
+  body .section-heading,
+  body .profile-section-heading,
+  body .corp-heading {
+    margin-bottom: 20px !important;
+  }
+
+  /* Smaller, Crisp Typography */
+  body main h1 {
+    font-size: clamp(23px, 6.2vw, 29px) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.025em;
+    margin-bottom: 12px !important;
+  }
+
+  body main h2 {
+    font-size: clamp(19px, 5vw, 23px) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 10px !important;
+  }
+
+  body main h3 {
+    font-size: 15.5px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 8px !important;
+  }
+
+  body main h4 {
+    font-size: 13.5px !important;
+    line-height: 1.35 !important;
+  }
+
+  body main p,
+  body main li {
+    font-size: 12.5px !important;
+    line-height: 1.62 !important;
+  }
+
+  body main .lead,
+  body main .intro-lead {
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  body main .eyebrow,
+  body main .banner-eyebrow,
+  body main .home-enquiry-label {
+    font-size: 9px !important;
+    letter-spacing: 0.09em !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Suitable, Compact Buttons across All Pages */
+  body main .button,
+  body main .banner-button,
+  body main .home-enquiry-button,
+  body main .contact-whatsapp,
+  body main button[type='submit'] {
+    min-height: 36px !important;
+    padding: 8px 15px !important;
+    font-size: 11.5px !important;
+    line-height: 1.3 !important;
+    gap: 8px !important;
+    border-radius: 6px;
+  }
+
+  body main .button svg,
+  body main .banner-button svg,
+  body main .home-enquiry-button svg {
+    width: 14px !important;
+    height: 14px !important;
+    flex: 0 0 14px !important;
+  }
+
+  /* Homepage Banner & Highlights — Eyebrow + Heading on top, Box Showcase in the middle, Copy + Buttons below */
+  body.page-index .packaging-banner .banner-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    min-height: 0 !important;
+    padding-top: 16px !important;
+    padding-bottom: 20px !important;
+  }
+
+  body.page-index .packaging-banner .banner-copy {
+    display: contents !important;
+  }
+
+  body.page-index .packaging-banner .banner-eyebrow {
+    order: 1 !important;
+    position: relative;
+    z-index: 2;
+    margin: 0 0 6px !important;
+  }
+
+  body.page-index .packaging-banner h1 {
+    order: 2 !important;
+    position: relative;
+    z-index: 2;
+    margin: 0 0 12px !important;
+  }
+
+  body.page-index .packaging-banner .banner-showcase {
+    order: 3 !important;
+    position: relative !important;
+    aspect-ratio: 16 / 10 !important;
+    max-height: 210px !important;
+    width: 100% !important;
+    margin: 0 0 14px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+  }
+
+  body.page-index .packaging-banner .banner-description {
+    order: 4 !important;
+    position: relative;
+    z-index: 2;
+    font-size: 12.5px !important;
+    line-height: 1.55 !important;
+    margin: 0 0 14px !important;
+  }
+
+  body.page-index .packaging-banner .banner-actions {
+    order: 5 !important;
+    position: relative;
+    z-index: 2;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    max-width: none !important;
+    margin: 0 0 10px !important;
+  }
+
+  body.page-index .packaging-banner .banner-button {
+    width: auto !important;
+    flex: 1 1 135px !important;
+    justify-content: center !important;
+    padding: 8px 12px !important;
+    min-height: 36px !important;
+    font-size: 11px !important;
+  }
+
+  body.page-index .packaging-banner .banner-assurance {
+    order: 6 !important;
+    position: relative;
+    z-index: 2;
+    margin: 0 !important;
+    font-size: 10px !important;
+    gap: 5px !important;
+  }
+
+  body.page-index .packaging-banner .banner-assurance svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  body.page-index .packaging-banner .banner-product-stage {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 4% !important;
+    width: 90% !important;
+    height: 88% !important;
+    margin: 0 !important;
+  }
+
+  body.page-index .packaging-banner .banner-product {
+    object-fit: contain !important;
+  }
+
+  body.page-index .packaging-highlights {
+    padding-bottom: 12px !important;
+  }
+
+  body.page-index .packaging-highlights > .container {
+    width: calc(100% - 28px) !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px 10px !important;
+    padding: 12px !important;
+    min-height: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  body.page-index .packaging-highlights a {
+    min-height: 34px !important;
+    gap: 8px !important;
+    padding: 2px 6px !important;
+    align-items: flex-start !important;
+  }
+
+  body.page-index .packaging-highlights a:nth-child(odd) {
+    border-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  body.page-index .packaging-highlights a:nth-child(even) {
+    padding-right: 0 !important;
+    padding-left: 10px !important;
+  }
+
+  body.page-index .packaging-highlights a > svg {
+    width: 20px !important;
+    height: 20px !important;
+    flex: 0 0 20px !important;
+    margin-top: 1px;
+  }
+
+  body.page-index .packaging-highlights strong {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+
+  body.page-index .packaging-highlights a > span > span {
+    font-size: 9.5px !important;
+    line-height: 1.35 !important;
+    margin-top: 2px !important;
+  }
+
+  /* Homepage Sections & Enquiry Strip */
+  body.page-index .home-enquiry-layout {
+    padding-top: 20px !important;
+    padding-bottom: 24px !important;
+    gap: 14px !important;
+  }
+
+  body.page-index .home-enquiry-button {
+    width: auto !important;
+    justify-self: start !important;
+  }
+
+  body.page-index .corp-marks > .container {
+    padding-block: 22px !important;
+    gap: 16px !important;
+  }
+
+  /* Internal Hero Banners (about, products, capabilities, industries, quality, quotation, contact) */
+  body .internal-hero,
+  body .about-hero,
+  body .catalogue-hero,
+  body .capabilities-hero {
+    min-height: 155px !important;
+    padding: 22px 0 24px !important;
+  }
+
+  body .internal-hero .breadcrumb,
+  body .about-hero .breadcrumb,
+  body .catalogue-hero .breadcrumb,
+  body .capabilities-hero .breadcrumb {
+    font-size: 9.5px !important;
+    margin-bottom: 10px !important;
+    gap: 6px !important;
+  }
+
+  body .internal-hero p:not(.eyebrow):not(.breadcrumb),
+  body .about-hero p:not(.eyebrow):not(.breadcrumb),
+  body .catalogue-hero p:not(.eyebrow):not(.breadcrumb),
+  body .capabilities-hero p:not(.eyebrow):not(.breadcrumb) {
+    font-size: 12px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Responsive Images across All Main Pages */
+  body main .wide-photo > img,
+  body main .feature-card img,
+  body main .image-frame img,
+  body main .group-photo img,
+  body main .group-cards img,
+  body main .swiper-slide img,
+  body main .about-main-photo img,
+  body main .about-detail-photo img,
+  body main .about-approach-photo img,
+  body main .capability-card-photo img,
+  body main .capability-cta-photo img,
+  body main .product-photo img {
+    width: 100% !important;
+    height: clamp(165px, 46vw, 220px) !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  body main .corp-owner-photo img {
+    width: 100% !important;
+    height: clamp(200px, 58vw, 270px) !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+  }
+
+  body main .catalogue-card-image {
+    height: clamp(150px, 42vw, 195px) !important;
+  }
+
+  body main .catalogue-card-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  body main .catalogue-card-image.is-illustration img,
+  body main .profile-pvc-example img {
+    object-fit: contain !important;
+    height: clamp(140px, 38vw, 185px) !important;
+  }
+
+  /* Product Filter Tabs & Cards */
+  body.page-products .catalogue-tabs,
+  body .filters {
+    gap: 6px !important;
+    margin-bottom: 18px !important;
+  }
+
+  body.page-products .catalogue-tabs button,
+  body .filters button {
+    min-height: 32px !important;
+    padding: 6px 10px !important;
+    font-size: 10.5px !important;
+    gap: 5px !important;
+  }
+
+  /* Industries Sector Grid & Capability Cards */
+  body .sector-grid {
+    gap: 14px !important;
+  }
+
+  body .sector-grid article {
+    padding: 16px 14px !important;
+  }
+
+  body .capability-cta {
+    padding: 16px !important;
+    gap: 14px !important;
+  }
+
+  body .capability-cta .button {
+    width: auto !important;
+    justify-self: start !important;
+  }
+
+  /* Forms & Maps (Contact & Quotation) */
+  body .form-grid {
+    gap: 10px !important;
+  }
+
+  body input,
+  body select,
+  body textarea {
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+  }
+
+  body iframe {
+    width: 100% !important;
+    height: 210px !important;
+  }
+
+  body .contact-list a {
+    font-size: 13.5px !important;
+  }
+
+  /* ========================================================================
+     GRAND TECHNO PAGE MOBILE REFINEMENTS
+     ======================================================================== */
+
+  body:has(.grand-hero-brand) .hero {
+    min-height: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  body:has(.grand-hero-brand) .hero-inner {
+    padding: 16px 0 18px !important;
+  }
+
+  body:has(.grand-hero-brand) .grand-hero-brand {
+    margin-bottom: 10px !important;
+  }
+
+  body:has(.grand-hero-brand) .grand-hero-brand img {
+    max-height: 52px !important;
+    max-width: 155px !important;
+  }
+
+  body:has(.grand-hero-brand) .hero-copy > p:not(.eyebrow) {
+    font-size: 12px !important;
+    line-height: 1.55 !important;
+  }
+
+  body:has(.grand-hero-brand) .hero-signature {
+    margin-top: 12px !important;
+    font-size: 9.5px !important;
+  }
+
+  body:has(.grand-hero-brand) .hero-image {
+    height: clamp(190px, 54vw, 245px) !important;
+    width: 100% !important;
+  }
+
+  body:has(.grand-hero-brand) .hero-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  body:has(.grand-hero-brand) .experiences {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    margin-top: 16px !important;
+  }
+
+  body:has(.grand-hero-brand) .experience-card {
+    min-height: 0 !important;
+    padding: 12px 10px !important;
+  }
+
+  body:has(.grand-hero-brand) .experience-card:last-child {
+    grid-column: 1 / -1;
+    padding: 12px 14px !important;
+    text-align: center !important;
+  }
+
+  body:has(.grand-hero-brand) .experience-card:last-child p {
+    text-align: center !important;
+  }
+
+  body:has(.grand-hero-brand) .experience-card > svg {
+    width: 22px !important;
+    height: 22px !important;
+    margin-bottom: 6px !important;
+  }
+
+  body:has(.grand-hero-brand) .experience-card h2 {
+    font-size: 13px !important;
+    margin-bottom: 4px !important;
+  }
+
+  body:has(.grand-hero-brand) .experience-card p {
+    font-size: 10.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  body:has(.grand-hero-brand) .company-intro,
+  body:has(.grand-hero-brand) .venue-details,
+  body:has(.grand-hero-brand) .gallery-section,
+  body:has(.grand-hero-brand) .venue-contact {
+    padding-block: 26px !important;
+    margin-block: 0 !important;
+  }
+
+  body:has(.grand-hero-brand) .celebration-image img,
+  body:has(.grand-hero-brand) .stay-image,
+  body:has(.grand-hero-brand) .stay-image img,
+  body:has(.grand-hero-brand) .detail-image,
+  body:has(.grand-hero-brand) .detail-image img {
+    height: clamp(175px, 48vw, 220px) !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  body:has(.grand-hero-brand) .celebration-copy {
+    padding: 20px 18px !important;
+  }
+
+  body:has(.grand-hero-brand) .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  body:has(.grand-hero-brand) .gallery-item {
+    height: clamp(115px, 32vw, 150px) !important;
+  }
+
+  body:has(.grand-hero-brand) .gallery-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* ========================================================================
+     GREEN TECHNO FARM PAGE MOBILE REFINEMENTS
+     ======================================================================== */
+
+  body#home .hero {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 14px !important;
+    overflow: hidden !important;
+  }
+
+  body#home .hero-content {
+    padding-top: 16px !important;
+    padding-bottom: 12px !important;
+  }
+
+  body#home .farm-hero-brand {
+    margin-bottom: 10px !important;
+  }
+
+  body#home .farm-hero-brand img {
+    max-height: 50px !important;
+    max-width: 150px !important;
+  }
+
+  body#home .hero-content p {
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+    margin: 8px 0 0 !important;
+  }
+
+  body#home .hero-collage {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: clamp(185px, 52vw, 235px) !important;
+    margin-top: 8px !important;
+    overflow: hidden !important;
+  }
+
+  body#home .facts {
+    margin-top: 12px !important;
+    border-radius: 14px !important;
+    padding: 12px 8px !important;
+    gap: 10px 6px !important;
+  }
+
+  body#home .facts > div {
+    gap: 8px !important;
+  }
+
+  body#home .facts svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  body#home .facts b {
+    font-size: 10.5px !important;
+    line-height: 1.3 !important;
+  }
+
+  body#home .intro {
+    padding-block: 24px !important;
+    gap: 18px !important;
+  }
+
+  body#home .intro > img {
+    width: 100% !important;
+    height: clamp(175px, 48vw, 220px) !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+  }
+
+  body#home .benefits {
+    gap: 8px !important;
+  }
+
+  body#home .benefits > div {
+    padding: 10px 6px !important;
+    font-size: 10.5px !important;
+    border-radius: 10px !important;
+  }
+
+  body#home .benefits svg {
+    width: 22px !important;
+    height: 22px !important;
+    margin-bottom: 4px !important;
+  }
+
+  body#home .produce {
+    padding-block: 16px 24px !important;
+  }
+
+  body#home .produce-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  body#home .produce-card > img {
+    width: 100% !important;
+    height: clamp(115px, 32vw, 150px) !important;
+    object-fit: cover !important;
+  }
+
+  body#home .produce-card > div {
+    padding: 10px !important;
+  }
+
+  body#home .produce-card h3 {
+    font-size: 14.5px !important;
+    margin-bottom: 6px !important;
+  }
+
+  body#home .produce-card ul {
+    min-height: 0 !important;
+    margin-bottom: 10px !important;
+  }
+
+  body#home .produce-card li {
+    font-size: 10.5px !important;
+    line-height: 1.4 !important;
+    padding-left: 16px !important;
+    margin-bottom: 4px !important;
+  }
+
+  body#home .produce-card li:before {
+    width: 12px !important;
+    height: 12px !important;
+    font-size: 8.5px !important;
+    line-height: 12px !important;
+  }
+
+  body#home .produce-card .button {
+    width: 100% !important;
+    min-height: 32px !important;
+    padding: 6px 10px !important;
+    font-size: 10.5px !important;
+  }
+
+  body#home .more-produce {
+    padding: 12px !important;
+    gap: 10px !important;
+    border-radius: 14px !important;
+  }
+
+  body#home .more-produce img {
+    width: 78px !important;
+    height: 62px !important;
+    flex-shrink: 0;
+    object-fit: cover !important;
+  }
+
+  body#home .process {
+    padding-block: 22px !important;
+  }
+
+  body#home .process-grid {
+    gap: 14px !important;
+  }
+
+  body#home .process article {
+    padding: 10px !important;
+    gap: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  body#home .process article img {
+    width: 36% !important;
+    height: 110px !important;
+    object-fit: cover !important;
+  }
+
+  body#home .process article svg {
+    width: 22px !important;
+    height: 22px !important;
+    margin-bottom: 3px !important;
+  }
+
+  body#home .process h3 {
+    font-size: 15px !important;
+    margin-bottom: 4px !important;
+  }
+
+  body#home .process article p {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  body#home .gallery {
+    padding-block: 20px 24px !important;
+  }
+
+  body#home .gallery-grid {
+    grid-template-rows: 150px 96px 96px !important;
+    gap: 8px !important;
+  }
+
+  body#home .contact-panel {
+    width: calc(100% - 24px) !important;
+    padding: 18px 14px !important;
+    gap: 16px !important;
+    border-radius: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  body#home .contact-panel form {
+    padding: 14px !important;
+  }
+
+  body#home .contact-panel form .button {
+    min-height: 36px !important;
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+  }
+
+  body#home .contact-panel address {
+    gap: 10px !important;
+    padding-top: 12px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* ==========================================================================
+   SMALL PHONES & NARROW IN-APP WEBVIEWS (<= 420px)
+   ========================================================================== */
+
+@media (max-width: 420px) {
+  body .container {
+    width: calc(100% - 24px);
+  }
+
+  body main h1 {
+    font-size: 22px !important;
+  }
+
+  body main h2 {
+    font-size: 18.5px !important;
+  }
+
+  body main h3 {
+    font-size: 14.5px !important;
+  }
+
+  body main p,
+  body main li {
+    font-size: 12px !important;
+  }
+
+  body main .button,
+  body main .banner-button,
+  body main .home-enquiry-button {
+    min-height: 34px !important;
+    padding: 7px 12px !important;
+    font-size: 11px !important;
+  }
+
+  body#home .produce-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  body#home .produce-card > img {
+    height: 155px !important;
+  }
+
+  body#home .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  body#home .message {
+    grid-column: span 1 !important;
+  }
+}
