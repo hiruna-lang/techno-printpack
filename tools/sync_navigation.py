@@ -5,7 +5,7 @@ from navigation_markup import render_header, render_footer
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ['index', 'about', 'products', 'capabilities', 'industries', 'quality', 'quotation', 'contact']
-ASSET_VERSION = '6'
+ASSET_VERSION = '7'
 check = '--check' in sys.argv
 
 # 1. Main company pages

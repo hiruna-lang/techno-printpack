@@ -43,14 +43,14 @@ html body .header :is(a, button) {
   border-bottom: none !important;
 }
 
-/* Header container floats above the page */
+/* Header container pinned steadily at top with zero jolt or motion on scroll */
 html body .header {
   position: sticky;
-  top: 14px;
+  top: 0 !important;
   z-index: 1000;
   width: 100%;
-  margin: 12px 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 8px 0 !important;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
@@ -58,7 +58,8 @@ html body .header {
   -webkit-backdrop-filter: none !important;
   pointer-events: none;
   isolation: isolate;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), top 0.28s ease;
+  transition: none !important;
+  transform: none !important;
 }
 
 /* Floating Light Capsule Bar */
@@ -89,6 +90,7 @@ html body .header.stuck .header-inner {
   background: var(--nav-capsule-bg-scrolled) !important;
   border-color: rgba(15, 42, 67, 0.14) !important;
   box-shadow: 0 14px 34px rgba(15, 42, 67, 0.12) !important;
+  transform: none !important;
 }
 
 /* Brand Logo (crisp logo on white/light pill) */
@@ -389,8 +391,11 @@ html body .header :is(a, button):focus-visible {
 
 @media (max-width: 1100px) {
   html body .header {
-    top: 8px;
-    margin: 8px 0;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 6px 0 !important;
+    transition: none !important;
+    transform: none !important;
   }
 
   html body .header .header-inner {
@@ -568,8 +573,11 @@ html body .header :is(a, button):focus-visible {
 
 @media (max-width: 600px) {
   html body .header {
-    top: 6px;
-    margin: 6px 0;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 6px 0 !important;
+    transition: none !important;
+    transform: none !important;
   }
 
   html body .header .brand.profile-logo img {

@@ -7,8 +7,6 @@ function revealLinkedDetails(){
 window.addEventListener('hashchange',revealLinkedDetails);
 window.addEventListener('pageshow',revealLinkedDetails);
 revealLinkedDetails();
-const sentinel=document.createElement('div');sentinel.style.cssText='position:absolute;top:80px;width:1px;height:1px;pointer-events:none';document.body.prepend(sentinel);
-if('IntersectionObserver'in window)new IntersectionObserver(([entry])=>document.querySelector('.header').classList.toggle('stuck',!entry.isIntersecting)).observe(sentinel);
 document.querySelector('.top')?.addEventListener('click',()=>{window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'});document.querySelector('.brand').focus({preventScroll:true});});
 const footerYear=document.querySelector('#year');
 if(footerYear)footerYear.textContent=new Date().getFullYear();
