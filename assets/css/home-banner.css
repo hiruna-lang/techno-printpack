@@ -6,9 +6,12 @@ body.page-index .packaging-banner .banner-layout{display:grid;grid-template-colu
 .packaging-banner .banner-eyebrow>span{width:27px;height:2px;background:#c07816;flex:0 0 27px}
 .packaging-banner h1{font:600 clamp(39px,3.8vw,55px)/1.12 var(--heading);letter-spacing:-.043em;margin:0 0 24px;color:#0f2a43;max-width:580px}
 .packaging-banner h1>span{color:#9d6112}
+.packaging-banner h1 .banner-highlight{color:#d85b11;display:block}
+.packaging-banner h1 .banner-subtext{color:#0f2a43;display:block}
 .packaging-banner .banner-description{font:400 15px/1.85 var(--body);color:#4a5d6c;margin:0 0 29px;max-width:460px}
 .packaging-banner .banner-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.packaging-banner .banner-button{display:inline-flex;align-items:center;justify-content:space-between;gap:23px;font:700 12px/1.5 var(--body);padding:14px 20px;min-height:49px;border:1px solid transparent;border-radius:2px;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
+.packaging-banner .banner-button{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;font:700 12px/1.5 var(--body);padding:14px 20px;min-height:49px;border:1px solid transparent;border-radius:2px;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
+.packaging-banner .banner-btn-arrow{font-size:16px;line-height:1}
 .packaging-banner .banner-button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7}
 .packaging-banner .banner-button-primary{background:#0f2a43;color:#fff;border-color:#0f2a43}
 .packaging-banner .banner-button-primary:hover{background:#234c6d;border-color:#234c6d}

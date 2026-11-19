@@ -13,6 +13,7 @@
   const menuButton = header.querySelector('.menu-toggle');
   const dropdowns = [...header.querySelectorAll('.nav-dropdown')];
   const desktop = window.matchMedia('(min-width: 1101px)');
+  const compactMobile = window.matchMedia('(max-width: 768px)');
 
   let hoverOpenTimer, hoverCloseTimer;
   const clearHover = () => {
@@ -76,8 +77,20 @@
       event.stopPropagation();
       const isOpen = navigation?.classList.contains('open');
       setMobileMenu(!isOpen);
+      // The drawer precedes its toggle in the DOM. Move keyboard users into
+      // the opened links instead of letting the next Tab skip to the hero.
+      if (!isOpen && compactMobile.matches) {
+        navigation.querySelector('a[href]')?.focus({ preventScroll: true });
+      }
     });
   }
+
+  header.addEventListener('focusout', () => {
+    if (!compactMobile.matches) return;
+    requestAnimationFrame(() => {
+      if (!header.contains(document.activeElement)) setMobileMenu(false);
+    });
+  });
 
   // Dropdowns interaction
   dropdowns.forEach(dropdown => {

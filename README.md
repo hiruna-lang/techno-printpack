@@ -170,3 +170,15 @@ Large gold fills were replaced with light-grey/white panels for the owner commit
 The remaining manufacturing consultation uses a white bordered layout with a clearly visible factory-photo tile, navy copy and a navy action. On mobile the photo and full-width action stack naturally. Its earlier decorative carton illustration remains preserved but is hidden in this layout. These changes are scoped in `assets/css/brand-theme.css` and `assets/css/content-actions.css`; all content, photographs, navigation, forms and enquiry destinations are retained.
 
 Run `python tools/check_section_design.py http://127.0.0.1:8765` to check responsive section layouts, text contrast, content preservation and the full-width logo loop, including reduced-motion and no-JavaScript views.
+
+### Mobile homepage opening
+
+The homepage rules in `assets/css/mobile-responsive.css` apply only at widths up to 768px. The order is label, 34–42px heading, description, two full-width actions, product scene and existing assurance. The original studio backdrop bleeds to the screen edges and blends into the light hero background; the six transparent WebPs stay sharp and contained. Reserved stage and heading dimensions prevent image and font changes from shifting the content. No new images, dependencies or carousel controls are added. The features use two columns, with one column at 340px and below for comfortable wrapping.
+
+The mobile header uses a larger logo and a 44px menu control across all pages. `assets/js/navigation.js` moves focus into its opened drawer and closes it when keyboard focus leaves the header; these refinements apply at 768px and below. Existing dropdown, Escape, outside-click and link-close behavior is retained. Desktop geometry, all company text, image assets, links and the carousel's five-second interval/1.2-second crossfade are preserved. Generic compact typography rules exclude the homepage hero so its mobile design does not require competing `!important` overrides.
+
+### Mobile layouts across the website
+
+At 320–768px, product catalogue cards, manufacturing cards, homepage solution photographs and Farm produce cards use two columns with proportional images and complete text. Product category buttons remain a single horizontally scrollable row with 44px touch targets. Illustrated packaging uses `contain`; factory photographs use `cover`. The grid images in `index.html`, `products.html` and `capabilities.html` declare half-width mobile `sizes` hints to avoid fetching unnecessarily large source files on phones. The desktop hints are retained.
+
+`mobile-responsive.css` also provides consistent reading sizes, 16px form fields with 48px control heights, space for the Contact form's icons, and a natural aspect ratio for the About inset photograph. Text-heavy sections and forms remain stacked where needed. Farm card actions align at the bottom, and the Quality marks keep their automatic rightward loop while showing two marks across on phones. `footer.css` keeps the mobile directory readable with 44px links. All changes are inside the 768px breakpoint; desktop layouts and original assets are unchanged.
