@@ -6,10 +6,10 @@
    ========================================================================== */
 
 :root {
-  --nav-capsule-bg: rgba(255, 255, 255, 0.95);
+  --nav-capsule-bg: #ffffff;
   --nav-capsule-bg-scrolled: #ffffff;
   --nav-capsule-border: rgba(15, 42, 67, 0.1);
-  --nav-capsule-shadow: 0 10px 30px rgba(15, 42, 67, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --nav-capsule-shadow: 0 10px 30px rgba(15, 42, 67, 0.09), 0 2px 6px rgba(0, 0, 0, 0.04);
   
   --nav-text-color: #0f2a43;
   --nav-text-hover: #f36c21;
@@ -44,11 +44,16 @@ html body .header :is(a, button) {
 }
 
 /* Header container pinned steadily at top with zero jolt or motion on scroll */
-html body .header {
-  position: sticky;
+html body .header,
+html body .header.stuck,
+body .header,
+body .header.stuck,
+.header,
+.header.stuck {
+  position: sticky !important;
   top: 0 !important;
-  z-index: 1000;
-  width: 100%;
+  z-index: 1000 !important;
+  width: 100% !important;
   margin: 0 !important;
   padding: 8px 0 !important;
   background: transparent !important;
@@ -56,14 +61,16 @@ html body .header {
   box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  pointer-events: none;
-  isolation: isolate;
+  pointer-events: none !important;
+  isolation: isolate !important;
   transition: none !important;
   transform: none !important;
+  will-change: auto !important;
 }
 
 /* Floating Light Capsule Bar */
-html body .header .header-inner {
+html body .header .header-inner,
+html body .header.stuck .header-inner {
   position: relative;
   pointer-events: auto;
   display: flex;
@@ -76,21 +83,18 @@ html body .header .header-inner {
   max-height: 60px;
   margin: 0 auto;
   padding: 6px 10px 6px 22px;
-  background: var(--nav-capsule-bg) !important;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: #ffffff !important;
   border: 1px solid var(--nav-capsule-border) !important;
   border-radius: 9999px !important;
-  box-shadow: var(--nav-capsule-shadow) !important;
-  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 30px rgba(15, 42, 67, 0.09), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  transition: none !important;
+  transform: none !important;
 }
 
 /* When scrolling / stuck */
 html body .header.stuck .header-inner {
-  background: var(--nav-capsule-bg-scrolled) !important;
   border-color: rgba(15, 42, 67, 0.14) !important;
-  box-shadow: 0 14px 34px rgba(15, 42, 67, 0.12) !important;
-  transform: none !important;
+  box-shadow: 0 12px 32px rgba(15, 42, 67, 0.11) !important;
 }
 
 /* Brand Logo (crisp logo on white/light pill) */
@@ -390,12 +394,22 @@ html body .header :is(a, button):focus-visible {
 }
 
 @media (max-width: 1100px) {
-  html body .header {
+  html body .header,
+  html body .header.stuck,
+  body .header,
+  body .header.stuck,
+  .header,
+  .header.stuck {
+    position: sticky !important;
     top: 0 !important;
     margin: 0 !important;
     padding: 6px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
     transition: none !important;
     transform: none !important;
+    will-change: auto !important;
   }
 
   html body .header .header-inner {
@@ -572,12 +586,22 @@ html body .header :is(a, button):focus-visible {
 }
 
 @media (max-width: 600px) {
-  html body .header {
+  html body .header,
+  html body .header.stuck,
+  body .header,
+  body .header.stuck,
+  .header,
+  .header.stuck {
+    position: sticky !important;
     top: 0 !important;
     margin: 0 !important;
     padding: 6px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
     transition: none !important;
     transform: none !important;
+    will-change: auto !important;
   }
 
   html body .header .brand.profile-logo img {

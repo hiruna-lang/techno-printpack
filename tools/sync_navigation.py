@@ -5,7 +5,7 @@ from navigation_markup import render_header, render_footer
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ['index', 'about', 'products', 'capabilities', 'industries', 'quality', 'quotation', 'contact']
-ASSET_VERSION = '7'
+ASSET_VERSION = '8'
 check = '--check' in sys.argv
 
 # 1. Main company pages
@@ -16,6 +16,16 @@ for name in PAGES:
     assert count == 1, name
     after, f_count = re.subn(r'<footer class="site-footer".*?</footer>', lambda _: render_footer(), after, count=1, flags=re.S)
     assert f_count == 1, f"Footer missing in {name}"
+
+    # Cache-bust core style stylesheets
+    style_css = f'<link rel="stylesheet" href="assets/css/style.css?v={ASSET_VERSION}">'
+    after = re.sub(r'<link rel="stylesheet" href="assets/css/style\.css(?:\?v=[^"]*)?">', style_css, after)
+
+    corp_css = f'<link rel="stylesheet" href="assets/css/corporate.css?v={ASSET_VERSION}">'
+    after = re.sub(r'<link rel="stylesheet" href="assets/css/corporate\.css(?:\?v=[^"]*)?">', corp_css, after)
+
+    corp_ref_css = f'<link rel="stylesheet" href="assets/css/corporate-refresh.css?v={ASSET_VERSION}">'
+    after = re.sub(r'<link rel="stylesheet" href="assets/css/corporate-refresh\.css(?:\?v=[^"]*)?">', corp_ref_css, after)
 
     # Cache-bust footer.css
     footer_css = f'<link rel="stylesheet" href="assets/css/footer.css?v={ASSET_VERSION}">'

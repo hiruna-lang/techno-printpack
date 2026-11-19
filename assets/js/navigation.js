@@ -21,9 +21,14 @@
     clearTimeout(hoverCloseTimer);
   };
 
-  // Scroll detection to update header appearance
+  // Scroll detection to update header appearance smoothly without layout thrashing
+  let isStuck = null;
   const onScroll = () => {
-    header.classList.toggle('stuck', window.scrollY > 15);
+    const shouldStick = window.scrollY > 20;
+    if (shouldStick !== isStuck) {
+      isStuck = shouldStick;
+      header.classList.toggle('stuck', shouldStick);
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

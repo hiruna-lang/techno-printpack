@@ -10,12 +10,12 @@ p{color:var(--muted)}
 .eyebrow:after{content:'';display:block;width:42px;height:2px;margin-top:11px;background:var(--amber)}
 body .utility-bar{height:32px;background:#103550;color:#fff;font-size:11px;border:0}
 body .utility-bar .container{height:100%;align-items:center}
-body .header{background:rgba(255,255,255,.98);box-shadow:0 4px 18px rgba(13,44,68,.12);z-index:40}
+body .header{background:transparent;box-shadow:none;z-index:40}
 body .header-inner{height:90px;gap:28px}
 body .brand.profile-logo{width:252px;flex:0 0 252px;min-width:0}
 body .brand.profile-logo img{width:100%;height:auto}
 body .header.stuck .header-inner{transform:none;will-change:auto}
-body .header.stuck{box-shadow:0 2px 12px #142d4010}
+body .header.stuck{box-shadow:none}
 body #navigation{gap:23px;margin-left:auto}
 body #navigation>a:not(.button),body #navigation .nav-dropdown-heading>a{font-family:var(--body);font-size:13px;font-weight:700;color:#0b3152;padding:12px 0;text-shadow:0 1px 0 #fff}
 body #navigation>a:not(.button)[aria-current=page],body #navigation .nav-dropdown-heading>a[aria-current=page]{color:#af6509;box-shadow:inset 0 -2px var(--amber)}

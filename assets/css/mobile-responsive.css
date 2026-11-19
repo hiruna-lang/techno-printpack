@@ -443,21 +443,39 @@ main iframe {
   }
 
   /* Shared mobile header: rock-solid sticky position with zero jolt */
-  html body .header {
+  html body .header,
+  html body .header.stuck,
+  body .header,
+  body .header.stuck,
+  .header,
+  .header.stuck {
+    position: sticky !important;
     top: 0 !important;
+    z-index: 1000 !important;
+    width: 100% !important;
     margin: 0 !important;
     padding: 6px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
     transition: none !important;
     transform: none !important;
+    will-change: auto !important;
   }
 
-  html body .header .header-inner {
+  html body .header .header-inner,
+  html body .header.stuck .header-inner {
     width: calc(100% - 24px) !important;
     height: 58px !important;
     max-height: 58px !important;
     padding: 6px 9px 6px 15px !important;
     gap: 12px;
+    background: #ffffff !important;
+    border: 1px solid rgba(15, 42, 67, 0.1) !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 10px 28px rgba(15, 42, 67, 0.09) !important;
     transform: none !important;
+    transition: none !important;
   }
 
   html body .header .brand.profile-logo img {
